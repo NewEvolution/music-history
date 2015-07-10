@@ -95,12 +95,13 @@ nav .active {
 }
 
 .filter input {
+  display: block;
   width: 110px;
   font-size: 1.1em;
   background-color: #eee;
   border: 2px solid black;
   border-radius: 5px;
-  margin: 0 29% 15px;
+  margin: 0 auto 15px;
 }
 
 /* Right Content Area ---------------- */
@@ -135,7 +136,7 @@ nav .active {
   border-right: 1px solid black;
 }
 
-/* Breakpoint One */
+/* Breakpoint Tablet */
 
 @media screen and (max-width: 1060px) {
   .container {
@@ -144,14 +145,14 @@ nav .active {
   }
 }
 
-/* Breakpoint Two */
+/* Breakpoint Mobile */
 
 @media screen and (max-width: 650px) {
   .flexbox {
     display: block;
   }
   .content {
-    margin: 0;
+    margin: 0 0 15px;
     width: auto;
   }
 }
