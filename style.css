@@ -86,7 +86,6 @@ nav .active {
 
 .filter {
   clear: both;
-  margin-left: 29%;
 }
 
 .filter input {
@@ -95,7 +94,7 @@ nav .active {
   background-color: #eee;
   border: 2px solid black;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin: 0 29% 15px;
 }
 
 /* Right Content Area ---------------- */
