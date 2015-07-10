@@ -141,7 +141,6 @@ nav .active {
 @media screen and (min-width: 1500px) {
   .container {
     width: 50%;
-    padding: 0 15px;
   }
 }
 
@@ -150,6 +149,7 @@ nav .active {
 @media screen and (max-width: 1060px) {
   .container {
     width: 100%;
+    margin: 0 15px;
   }
 }
 
