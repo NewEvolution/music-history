@@ -1,0 +1,153 @@
+body {
+  box-model: border-box;
+  font-family: "Arial", sans-serif;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.container {
+  box-model: border-box;
+  margin: 0 auto;
+  padding: 0;
+  width: 70%;
+}
+
+/* Header Navigation Bar ------------- */
+
+header {
+  background-color: #FFB4B0;
+  border: 2px solid black;
+  margin: 15px 0;
+  padding-left: 10px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+nav a {
+  display: block;
+  padding: 15px 5px;
+}
+
+nav span {
+  border-right: 2px solid black;
+}
+
+nav .active {
+  color: black;
+  text-decoration: none;
+}
+
+/* Control & Content Flexbox ----------------- */
+
+.flexbox {
+  display: flex;
+}
+
+/* Left Control Area ----------------- */
+
+.controls {
+  background-color: #4DD7FA;
+  border: 2px solid black;
+  padding: 0 10px;
+  min-width: 255px;
+  margin-bottom: 15px;
+}
+
+.controls label {
+  display: inline-block;
+  margin: 17px 0 5px;
+}
+
+.fullwide {
+  width: 100%;
+}
+
+.controls ul {
+  float: left;
+  padding: 0 15px 2px;
+}
+
+.controls li {
+  list-style-type: none;
+  margin-bottom: 8px;
+}
+
+.controls select {
+  border: 2px solid black;
+}
+
+.filter {
+  clear: both;
+  margin-left: 29%;
+}
+
+.filter input {
+  width: 110px;
+  font-size: 1.1em;
+  background-color: #eee;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* Right Content Area ---------------- */
+
+.content {
+  box-model: border-box;
+  background-color: #FEFAC0;
+  border: 2px solid black;
+  padding: 0 0 30px;
+  margin: 0 0 15px 15px;
+  width: 100%;
+}
+
+.content h1 {
+  color: #785616;
+  font-weight: normal;
+  font-size: 1.8em;
+  margin: 30px 30px 10px;
+}
+
+.content ul {
+  margin: 0 0 0 25px;
+  padding: 0;
+}
+
+.content li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.content span {
+  border-right: 1px solid black;
+}
+
+/* Breakpoint One */
+
+@media screen and (max-width: 1060px) {
+  .container {
+    width: 100%;
+    margin: 0 15px;
+  }
+}
+
+/* Breakpoint Two */
+
+@media screen and (max-width: 650px) {
+  .flexbox {
+    display: block;
+  }
+  .content {
+    margin: 0;
+  }
+}
