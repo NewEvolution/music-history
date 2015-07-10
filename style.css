@@ -149,5 +149,6 @@ nav .active {
   }
   .content {
     margin: 0;
+    width: auto;
   }
 }
