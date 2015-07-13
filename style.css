@@ -140,7 +140,7 @@ nav .active {
 
 @media screen and (min-width: 1500px) {
   .container {
-    width: 50%;
+    width: 1000px;
   }
 }
 
