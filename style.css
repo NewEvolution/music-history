@@ -3,10 +3,10 @@ body {
   font-size: 0.9em;
   margin: 0;
   padding: 0;
-  display:-ms-flexbox;
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
 }
 
 .container {
@@ -51,10 +51,10 @@ nav .active {
 /* Control & Content Flexbox ----------------- */
 
 .flexbox {
-  display:-ms-flexbox;
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
 }
 
 /* Left Control Area ------------------------- */
