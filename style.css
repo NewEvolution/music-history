@@ -46,6 +46,7 @@ nav span {
 nav .active {
   color: black;
   text-decoration: none;
+  cursor: default;
 }
 
 /* Control & Content Flexbox ----------------- */
@@ -107,7 +108,7 @@ nav .active {
 /* Right Content Area ------------------------ */
 
 .content {
-  box-model: border-box;
+  /*box-model: border-box;*/
   background-color: #FEFAC0;
   border: 2px solid black;
   padding: 0 0 30px;
