@@ -137,6 +137,10 @@ nav .active {
   border-right: 1px solid black;
 }
 
+.content p {
+  margin: 20px;
+}
+
 /* Breakpoint Massive ------------------------ */
 
 @media screen and (min-width: 1500px) {
