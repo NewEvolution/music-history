@@ -24,129 +24,125 @@
           </nav>
         </header>
 
-      <!-- Vertical content area container div -->
-      <div class="flexbox">
+      <!-- Left Conrol Area -->
+      <div class="controls">
+        <form action="#" method="POST">
 
-        <!-- Left Conrol Area -->
-        <div class="controls">
-          <form action="#" method="POST">
+          <label for="songlength">Song Length:</label>
+          <br>
+          <input class="fullwide" type="range" name="songlength" min="0.0" max="10.0" step="0.1" value="5.0">
+          <br>
 
-            <label for="songlength">Song Length:</label>
-            <br>
-            <input class="fullwide" type="range" name="songlength" min="0.0" max="10.0" step="0.1" value="5.0">
-            <br>
+          <label for="artist">Artist:</label>
+          <br>
+          <select class="fullwide" name="artist">
+            <option value="nirvana">Nirvana</option>
+            <option value="stp">Stone Temple Pilots</option>
+            <option value="mum">m&uacute;m</option>
+            <option value="robotscience">Robot Science</option>
+            <option value="colugo">Colugo</option>
+          </select>
+          <br>
 
-            <label for="artist">Artist:</label>
-            <br>
-            <select class="fullwide" name="artist">
-              <option value="nirvana">Nirvana</option>
-              <option value="stp">Stone Temple Pilots</option>
-              <option value="mum">m&uacute;m</option>
-              <option value="robotscience">Robot Science</option>
-              <option value="colugo">Colugo</option>
-            </select>
-            <br>
+          <label for="album">Album:</label>
+          <br>
+          <select class="fullwide" name="album">
+            <optgroup label="Nirvana">
+              <option value="bleach">Bleach</option>
+              <option value="nevermind">Nevermind</option>
+              <option value="incesticide">Incesticide</option>
+              <option value="inutero">In Utero</option>
+            </optgroup>
+            <optgroup label="Stone Temple Pilots">
+              <option value="core">Core</option>
+              <option value="purple">Purple</option>
+              <option value="no4">No. 4</option>
+            </optgroup>
+            <optgroup label="m&uacute;m">
+              <option value="ywdtio">Yesterday Was Dramatic - Today Is OK</option>
+            </optgroup>
+            <optgroup label="Robot Science">
+              <option value="square">square</option>
+              <option value="doodads">Doodads</option>
+              <option value="gl">Good Luck</option>
+            </optgroup>
+            <optgroup label="Colugo">
+              <option value="hyf">Hello Yellow Fellow</option>
+              <option value="mfp">Music for People</option>
+              <option value="dp">Dance Party</option>
+            </optgroup>
+          </select>
+          <br>
 
-            <label for="album">Album:</label>
-            <br>
-            <select class="fullwide" name="album">
-              <optgroup label="Nirvana">
-                <option value="bleach">Bleach</option>
-                <option value="nevermind">Nevermind</option>
-                <option value="incesticide">Incesticide</option>
-                <option value="inutero">In Utero</option>
-              </optgroup>
-              <optgroup label="Stone Temple Pilots">
-                <option value="core">Core</option>
-                <option value="purple">Purple</option>
-                <option value="no4">No. 4</option>
-              </optgroup>
-              <optgroup label="m&uacute;m">
-                <option value="ywdtio">Yesterday Was Dramatic - Today Is OK</option>
-              </optgroup>
-              <optgroup label="Robot Science">
-                <option value="square">square</option>
-                <option value="doodads">Doodads</option>
-                <option value="gl">Good Luck</option>
-              </optgroup>
-              <optgroup label="Colugo">
-                <option value="hyf">Hello Yellow Fellow</option>
-                <option value="mfp">Music for People</option>
-                <option value="dp">Dance Party</option>
-              </optgroup>
-            </select>
-            <br>
+          <label>Genre:</label>
+          <br>
+          <ul>
+            <li>
+              <input type="checkbox" name="rock" value="rock">Rock</li>
+            <li>
+              <input type="checkbox" name="pop" value="pop">Pop</li>
+            <li>
+              <input type="checkbox" name="blues" value="blues">Blues</li>
+          </ul>
+          <ul>
+            <li>
+              <input type="checkbox" name="classical" value="classical">Classical</li>
+            <li>
+              <input type="checkbox" name="jazz" value="jazz">Jazz</li>
+            <li>
+              <input type="checkbox" name="hiphop" value="hiphop">Hip hop</li>
+          </ul>
+          <div class="filter">
+            <input type="submit" value="Filter">
+          </div>
+        </form>
+      </div>
 
-            <label>Genre:</label>
-            <br>
-            <ul>
-              <li>
-                <input type="checkbox" name="rock" value="rock">Rock</li>
-              <li>
-                <input type="checkbox" name="pop" value="pop">Pop</li>
-              <li>
-                <input type="checkbox" name="blues" value="blues">Blues</li>
-            </ul>
-            <ul>
-              <li>
-                <input type="checkbox" name="classical" value="classical">Classical</li>
-              <li>
-                <input type="checkbox" name="jazz" value="jazz">Jazz</li>
-              <li>
-                <input type="checkbox" name="hiphop" value="hiphop">Hip hop</li>
-            </ul>
-            <div class="filter">
-              <input type="submit" value="Filter">
-            </div>
-          </form>
-        </div>
+      <!-- Right Content Area -->
+      <div id="content" class="content">
+        <section>
+          <h1>Big Long Now</h1>
+          <ul>
+            <li>Nirvana</li>
+            <li><span></span></li>
+            <li>Incesticide</li>
+            <li><span></span></li>
+            <li>Rock</li>
+          </ul>
+        </section>
 
-        <!-- Right Content Area -->
-        <div id="content" class="content">
-          <section>
-            <h1>Big Long Now</h1>
-            <ul>
-              <li>Nirvana</li>
-              <li><span></span></li>
-              <li>Incesticide</li>
-              <li><span></span></li>
-              <li>Rock</li>
-            </ul>
-          </section>
+        <section>
+          <h1>Kitchenware &amp; Candybars</h1>
+          <ul>
+            <li>Stone Temple Pilots</li>
+            <li><span></span></li>
+            <li>Purple</li>
+            <li><span></span></li>
+            <li>Rock</li>
+          </ul>
+        </section>
 
-          <section>
-            <h1>Kitchenware &amp; Candybars</h1>
-            <ul>
-              <li>Stone Temple Pilots</li>
-              <li><span></span></li>
-              <li>Purple</li>
-              <li><span></span></li>
-              <li>Rock</li>
-            </ul>
-          </section>
+        <section>
+          <h1>Slow Bicycle</h1>
+          <ul>
+            <li>m&uacute;m</li>
+            <li><span></span></li>
+            <li>Yesterday Was Dramatic - Today Is OK</li>
+            <li><span></span></li>
+            <li>Electronic</li>
+          </ul>
+        </section>
 
-          <section>
-            <h1>Slow Bicycle</h1>
-            <ul>
-              <li>m&uacute;m</li>
-              <li><span></span></li>
-              <li>Yesterday Was Dramatic - Today Is OK</li>
-              <li><span></span></li>
-              <li>Electronic</li>
-            </ul>
-          </section>
-
-          <section>
-            <h1>The Notion of Backwards Motion</h1>
-            <ul>
-              <li>Robot Science</li>
-              <li><span></span></li>
-              <li>Square</li>
-              <li><span></span></li>
-              <li>Electronic</li>
-            </ul>
-          </section>
-        </div>
+        <section>
+          <h1>The Notion of Backwards Motion</h1>
+          <ul>
+            <li>Robot Science</li>
+            <li><span></span></li>
+            <li>Square</li>
+            <li><span></span></li>
+            <li>Electronic</li>
+          </ul>
+        </section>
       </div>
     </div>
     <script type="text/javascript" src="songlist.js"></script>

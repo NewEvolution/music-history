@@ -2,17 +2,18 @@ body {
   font-family: "Arial", sans-serif;
   font-size: 0.9em;
   margin: 0;
-  padding: 0;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
+  padding: 15px;
 }
 
 .container {
   margin: 0 auto;
   padding: 0;
   width: 70%;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 /* Header Navigation Bar -------------------- */
@@ -20,8 +21,9 @@ body {
 header {
   background-color: #FFB4B0;
   border: 2px solid black;
-  margin: 15px 0;
+  margin: 0 0 15px;
   padding-left: 10px;
+  flex: 1 100%;
 }
 
 nav ul {
@@ -49,23 +51,14 @@ nav .active {
   cursor: default;
 }
 
-/* Control & Content Flexbox ----------------- */
-
-.flexbox {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-}
-
 /* Left Control Area ------------------------- */
 
 .controls {
   background-color: #4DD7FA;
   border: 2px solid black;
   padding: 0 10px;
-  min-width: 255px;
-  margin-bottom: 15px;
+  width: 0;
+  flex-grow: 5;
 }
 
 .controls label {
@@ -111,8 +104,9 @@ nav .active {
   background-color: #FEFAC0;
   border: 2px solid black;
   padding: 0 0 30px;
-  margin: 0 0 15px 15px;
-  width: 100%;
+  margin-left: 15px;
+  width: 0;
+  flex-grow: 10;
 }
 
 .content h1 {
@@ -166,18 +160,21 @@ nav .active {
 @media screen and (max-width: 1060px) {
   .container {
     width: 100%;
-    margin: 0 15px;
   }
 }
 
 /* Breakpoint Mobile ------------------------- */
 
 @media screen and (max-width: 650px) {
-  .flexbox {
+  .container {
     display: block;
   }
-  .content {
-    margin: 0 0 15px;
+  .controls {
     width: auto;
+    margin-bottom: 15px;
+  }
+  .content {
+    width: auto;
+    margin: 0;
   }
 }
