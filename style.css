@@ -108,7 +108,6 @@ nav .active {
 /* Right Content Area ------------------------ */
 
 .content {
-  /*box-model: border-box;*/
   background-color: #FEFAC0;
   border: 2px solid black;
   padding: 0 0 30px;
@@ -138,7 +137,20 @@ nav .active {
 }
 
 .content p {
-  margin: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.content p:nth-child(2n+0) {
+  background-color: seashell;
+}
+
+.content p:nth-child(2n+1) {
+  background-color: mintcream;
+}
+
+.content p:first-child {
+  font-weight: bold;
 }
 
 /* Breakpoint Massive ------------------------ */
