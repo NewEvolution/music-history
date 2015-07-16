@@ -14,13 +14,13 @@ songs.unshift("Big Long Now > by Nirvana on the album Incesticide");
 songs.push("The Notion of Backwards Motion > by Robot Science on the album Square");
 
 for (var i=0; i<songs.length; i++) {
-	var itemAsString = songs[i];
-	itemAsString = itemAsString.replace(">", "-");
-	itemAsString = itemAsString.replace(/\*/g, "");
-	itemAsString = itemAsString.replace(/@/g, "");
-	itemAsString = itemAsString.replace(/\(/g, "");
-	itemAsString = itemAsString.replace(/!/g, "");
-	songs[i] = "<p>" + itemAsString + "</p>";
+  var itemAsString = songs[i];
+  itemAsString = itemAsString.replace(">", "-");
+  itemAsString = itemAsString.replace(/\*/g, "");
+  itemAsString = itemAsString.replace(/@/g, "");
+  itemAsString = itemAsString.replace(/\(/g, "");
+  itemAsString = itemAsString.replace(/!/g, "");
+  songs[i] = "<p>" + itemAsString + "</p>";
 }
 
 contentDiv.innerHTML = songs.join("");
