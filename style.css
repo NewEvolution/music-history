@@ -2,7 +2,7 @@ body {
   font-family: "Arial", sans-serif;
   font-size: 0.9em;
   margin: 0;
-  padding: 15px;
+  padding: 0;
 }
 
 .container {
@@ -19,11 +19,13 @@ body {
 /* Header Navigation Bar -------------------- */
 
 header {
+  box-sizing: border-box;
   background-color: #FFB4B0;
   border: 2px solid black;
   margin: 0;
   padding-left: 10px;
   position: fixed;
+  top: 15px;
   width: inherit;
   flex: 1 100%;
 }
@@ -60,7 +62,7 @@ nav .active {
   border: 2px solid black;
   padding: 0 10px;
   width: 0;
-  margin-top: 65px;
+  margin-top: 80px;
   flex-grow: 5;
 }
 
@@ -107,7 +109,7 @@ nav .active {
   background-color: #FEFAC0;
   border: 2px solid black;
   padding: 0 0 30px;
-  margin:65px 0 0 15px;
+  margin: 80px 0 0 15px;
   width: 0;
   flex-grow: 10;
 }
@@ -162,7 +164,7 @@ nav .active {
 
 @media screen and (max-width: 1060px) {
   .container {
-    width: 100%;
+    width: 97%;
   }
 }
 
