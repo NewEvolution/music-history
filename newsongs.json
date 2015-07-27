@@ -1,0 +1,28 @@
+{
+  "songs": [
+    {
+      "title": "Big Long Now",
+      "artist": "Nirvana",
+      "album": "Incesticide",
+      "genre": "Rock"
+    },
+    {
+      "title": "Kitchenware & Candybars",
+      "artist": "Stone Temple Pilots",
+      "album": "Purple",
+      "genre": "Rock"
+    },
+    {
+      "title": "Slow Bicycle",
+      "artist": "múm",
+      "album": "Yesterday Was Dramatic - Today is OK",
+      "genre": "Electronic"
+    },
+    {
+      "title": "The Notion of Backwards Motion",
+      "artist": "Robot Science",
+      "album": "Square",
+      "genre": "Electronic"
+    }
+  ]
+}
