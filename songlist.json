@@ -1,64 +1,28 @@
 {
   "songs": [
     {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
+      "title": "Big Long Now",
+      "artist": "Nirvana",
+      "album": "Incesticide",
+      "genre": "Rock"
+    },
     {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
+      "title": "Kitchenware & Candybars",
+      "artist": "Stone Temple Pilots",
+      "album": "Purple",
+      "genre": "Rock"
+    },
     {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
+      "title": "Slow Bicycle",
+      "artist": "múm",
+      "album": "Yesterday Was Dramatic - Today is OK",
+      "genre": "Electronic"
+    },
     {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
-    {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
-    {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
-    {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
-    {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
-    {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
-    }
-    {
-      "title": "",
-      "album": "",
-      "artist": "",
-      "year": ""
+      "title": "The Notion of Backwards Motion",
+      "artist": "Robot Science",
+      "album": "Square",
+      "genre": "Electronic"
     }
   ]
 }
