@@ -16,7 +16,7 @@ $(document).ready(function() {
   })
 });
 
-$("button").click(function(e) {
+$("#more").click(function(e) {
   $.ajax({
     url: "newsongs.json"
   }).done(function(data) {
