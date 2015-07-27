@@ -4,7 +4,8 @@ function songWriter(dataObj) {
     $("#content").append("<section><h1>" + songArr[i].title + "</h1><ul>");
     $("#content").append("<li>" + songArr[i].artist + "</li><li><span></span></li>");
     $("#content").append("<li>" + songArr[i].album + "</li><li><span></span></li>");
-    $("#content").append("<li>" + songArr[i].genre + "</li></ul></section>");
+    $("#content").append("<li>" + songArr[i].genre + "</li></ul>");
+    $("#content").append("<button class='delete'>Delete</button></section>");
   }
 }
 
@@ -22,8 +23,12 @@ $("#more").click(function(e) {
   }).done(function(data) {
     songWriter(data)
   })
-})
+});
 
+$(".delete").click(function(e) {
+  console.log("Ding");
+  this.parent().remove();
+});
 
 // var contentDiv = document.getElementById("content");
 
