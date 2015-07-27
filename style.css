@@ -135,7 +135,7 @@ nav .active {
   border-right: 1px solid black;
 }
 
-button {
+#more {
   float: right;
   margin-right: 30px;
 }
