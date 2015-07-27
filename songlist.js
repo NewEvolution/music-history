@@ -26,6 +26,5 @@ $("#more").click(function(e) {
 });
 
 $(".delete").click(function(e) {
-  console.log("Ding");
-  parent(this).remove();
+  $(this).parent().remove();
 });
