@@ -135,9 +135,14 @@ nav .active {
   border-right: 1px solid black;
 }
 
-#more {
+button {
   float: right;
   margin-right: 30px;
+}
+
+#more {
+  clear: both;
+  margin-top: 20px;
 }
 
 /* Breakpoint Massive ------------------------ */
