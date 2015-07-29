@@ -1,10 +1,11 @@
 function songWriter(dataObj) {
   var songArr = dataObj.songs;
   for(var i=0; i<songArr.length; i++) {
-    $("#content").append("<section><h1>" + songArr[i].title + "</h1><ul><li>" + 
-      songArr[i].artist + "</li><li><span></span></li><li>" + songArr[i].album + 
+    $("#content").append("<section><button class='delete'>Delete</button><h1>" + 
+      songArr[i].title + "</h1><ul><li>" + songArr[i].artist + 
+      "</li><li><span></span></li><li>" + songArr[i].album + 
       "</li><li><span></span></li><li>" + songArr[i].genre + 
-      "</li></ul><button class='delete'>Delete</button></section>");
+      "</li></ul></section>");
   }
 }
 
