@@ -5,34 +5,19 @@ body {
   padding: 0 0 15px;
 }
 
-.container {
-  margin: 0 auto;
+.containered {
+  margin: 15px auto;
   padding: 0;
   width: 70%;
 }
 
 /* Header Navigation Bar -------------------- */
 
-.hider {
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  width: inherit;
-}
-
-.upper {
-  top: 0;
-  height: 15px;
-  background-color: white;
-}
-
 header {
   background-color: #FFB4B0;
   border: 2px solid black;
   margin: 0;
   padding-left: 10px;
-  position: fixed;
-  top: 15px;
 }
 
 nav ul {
@@ -60,34 +45,11 @@ nav .active {
   cursor: default;
 }
 
-.lower {
-  top: 63px;
-}
-
-.left, .right {
-  height: 15px;
-  background-color: white;
-  border-bottom: 2px solid black;
-  border-top: 2px solid black;
-  padding: 0 0 0 13px;
-}
-
-.left {
-  flex-grow: 5;
-}
-
-.right {
-  flex-grow: 10;
-  margin-left: 15px;
-}
-
 /* Left Control Area ------------------------- */
 
 .controls {
   background-color: #4DD7FA;
   border: 2px solid black;
-  padding: 0 10px;
-  margin-top: 80px;
 }
 
 /*.controls form {
@@ -138,7 +100,7 @@ nav .active {
   background-color: #FEFAC0;
   border: 2px solid black;
   padding: 0 0 30px 30px;
-  margin: 80px 0 0 15px;
+  margin: 0;
 }
 
 .content h1 {
