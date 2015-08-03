@@ -12,6 +12,7 @@
     <div class="container">
 
         <!-- Header Navigation Bar -->
+        <div class="hider upper"></div>
         <header>
           <nav>
             <ul>
@@ -23,6 +24,9 @@
             </ul>
           </nav>
         </header>
+        <div class="hider lower">
+          <div class="left"></div><div class="right"></div>
+        </div>
 
       <!-- Left Conrol Area -->
       <div class="controls">
@@ -100,7 +104,6 @@
 
       <!-- Right Content Area -->
       <div class="content">
-        <div id="content">
 <!-- Example song section formating from original layout  
         <section>
           <h1>Big Long Now</h1>
@@ -112,11 +115,10 @@
             <li>Rock</li>
           </ul>
         </section> -->
-          </div>
         <button id="more">More ></button>
       </div>
     </div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="songlist.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script data-main="./javascripts/main" src="bower_components/requirejs/require.js"></script>
   </body>
 </html>

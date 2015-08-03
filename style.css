@@ -18,6 +18,26 @@ body {
 
 /* Header Navigation Bar -------------------- */
 
+.hider {
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: inherit;
+  flex: 1 100%;
+}
+
+.upper {
+  top: 0;
+  height: 15px;
+  background-color: white;
+}
+
 header {
   box-sizing: border-box;
   background-color: #FFB4B0;
@@ -55,15 +75,41 @@ nav .active {
   cursor: default;
 }
 
+.lower {
+  top: 63px;
+}
+
+.left, .right {
+  height: 15px;
+  background-color: white;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  padding: 0 0 0 13px;
+}
+
+.left {
+  flex-grow: 5;
+}
+
+.right {
+  flex-grow: 10;
+  margin-left: 15px;
+}
+
 /* Left Control Area ------------------------- */
 
 .controls {
   background-color: #4DD7FA;
   border: 2px solid black;
   padding: 0 10px;
-  width: 0;
+  width: auto;
   margin-top: 80px;
   flex-grow: 5;
+}
+
+.controls form {
+  position: fixed;
+  width: inherit;
 }
 
 .controls label {
@@ -155,7 +201,7 @@ nav .active {
 
 /* Breakpoint Tablet ------------------------- */
 
-@media screen and (max-width: 1060px) {
+@media screen and (max-width: 1200px) {
   .container {
     width: 97%;
   }
@@ -163,13 +209,20 @@ nav .active {
 
 /* Breakpoint Mobile ------------------------- */
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 870px) {
   .container {
     display: block;
+  }
+  .right {
+    display: none;
   }
   .controls {
     width: auto;
     margin-bottom: 15px;
+  }
+  .controls form {
+    position: static;
+    width: inherit;
   }
   .content {
     width: auto;

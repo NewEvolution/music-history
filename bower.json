@@ -1,0 +1,24 @@
+{
+  "name": "music-history-5",
+  "version": "0.0.1",
+  "authors": [
+    "Ryan Tanay <ryantanay@newevolution.org>"
+  ],
+  "description": "Music history with RequireJS",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "requirejs": "~2.1.20"
+  }
+}
