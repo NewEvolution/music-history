@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Nashville Software School</title>
@@ -16,7 +16,7 @@
       <div class="row">
         <header class="col-sm-12">
           <nav>
-            <ul>
+            <ul class="list-inline">
               <li><a href="#" class="active">View Music</a></li>
               <li><span></span></li>
               <li><a href="#">Add Music</a></li>
@@ -35,12 +35,12 @@
 
             <label>Song Length:</label>
             <br>
-            <input class="fullwide" type="range" name="songlength" min="0.0" max="10.0" step="0.1" value="5.0">
+            <input class="form-control" type="range" name="songlength" min="0.0" max="10.0" step="0.1" value="5.0">
             <br>
 
             <label>Artist:</label>
             <br>
-            <select class="fullwide" name="artist">
+            <select class="form-control" name="artist">
               <option value="nirvana">Nirvana</option>
               <option value="stp">Stone Temple Pilots</option>
               <option value="mum">m&uacute;m</option>
@@ -51,7 +51,7 @@
 
             <label>Album:</label>
             <br>
-            <select class="fullwide" name="album">
+            <select class="form-control" name="album">
               <optgroup label="Nirvana">
                 <option value="bleach">Bleach</option>
                 <option value="nevermind">Nevermind</option>
@@ -95,7 +95,7 @@
               <li>
                 <input type="checkbox" name="jazz" value="jazz">Jazz</li>
               <li>
-                <input type="checkbox" name="hiphop" value="hiphop">Hip hop</li>
+                <input type="checkbox" name="hiphop" value="hiphop">Hip&nbsp;hop</li>
             </ul>
             <div class="filter">
               <input type="submit" value="Filter">
@@ -105,7 +105,7 @@
 
         <!-- Right Content Area -->
         <div class="content col-sm-8">
-  <!-- Example song section formating from original layout  
+        <!-- Example song section formating from original layout  
           <section>
             <h1>Big Long Now</h1>
             <ul>
