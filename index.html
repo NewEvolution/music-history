@@ -4,84 +4,87 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nashville Software School</title>
   </head>
   <body>
 
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-music" aria-hidden="true"></span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="main-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li role="presentation" class="active"><a href="#">View Music</a></li>
-            <li role="presentation"><a href="#">Add Music</a></li>
-            <li role="presentation"><a href="#">Profile</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Column container div -->
+    <!-- Main container div -->
     <div class="container-fluid">
 
+      <!-- Header Navigation Bar -->
+      <div class="fixed-nav-holder row">
+        <nav class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span></a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li role="presentation" class="active"><a href="#">View Music</a></li>
+              <li role="presentation"><a href="#">Add Music</a></li>
+              <li role="presentation"><a href="#">Profile</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
       <!-- Two column body layout -->
-      <div class="row-eq-height">
+      <div class="row undernav">
         <!-- Left Conrol Area -->
         <div class="col-sm-4 left-controls">
           <form class="form-group" action="#" method="POST">
 
-            <label for="songlength">Song Length:</label>
-            <input class="form-control input-sm" type="range" name="songlength" min="0.0" max="10.0" step="0.1" value="5.0">
-            <br>
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">Song Length:</span>
+              <input class="form-control" type="range" name="songlength" min="0.0" max="10.0" step="0.1" value="5.0">
+            </div>
 
-            <label for="artist">Artist:</label>
-            <select class="form-control" name="artist">
-              <option value="nirvana">Nirvana</option>
-              <option value="stp">Stone Temple Pilots</option>
-              <option value="mum">m&uacute;m</option>
-              <option value="robotscience">Robot Science</option>
-              <option value="colugo">Colugo</option>
-            </select>
-            <br>
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">Artist:&nbsp;&nbsp;</span>
+              <select class="form-control" name="artist">
+                <option value="nirvana">Nirvana</option>
+                <option value="stp">Stone Temple Pilots</option>
+                <option value="mum">m&uacute;m</option>
+                <option value="robotscience">Robot Science</option>
+                <option value="colugo">Colugo</option>
+              </select>
+            </div>
 
-            <label for="album">Album:</label>
-            <select class="form-control" name="album">
-              <optgroup label="Nirvana">
-                <option value="bleach">Bleach</option>
-                <option value="nevermind">Nevermind</option>
-                <option value="incesticide">Incesticide</option>
-                <option value="inutero">In Utero</option>
-              </optgroup>
-              <optgroup label="Stone Temple Pilots">
-                <option value="core">Core</option>
-                <option value="purple">Purple</option>
-                <option value="no4">No. 4</option>
-              </optgroup>
-              <optgroup label="m&uacute;m">
-                <option value="ywdtio">Yesterday Was Dramatic - Today Is OK</option>
-              </optgroup>
-              <optgroup label="Robot Science">
-                <option value="square">square</option>
-                <option value="doodads">Doodads</option>
-                <option value="gl">Good Luck</option>
-              </optgroup>
-              <optgroup label="Colugo">
-                <option value="hyf">Hello Yellow Fellow</option>
-                <option value="mfp">Music for People</option>
-                <option value="dp">Dance Party</option>
-              </optgroup>
-            </select>
-            <br>
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">Album:</span>
+              <select class="form-control" name="album">
+                <optgroup label="Nirvana">
+                  <option value="bleach">Bleach</option>
+                  <option value="nevermind">Nevermind</option>
+                  <option value="incesticide">Incesticide</option>
+                  <option value="inutero">In Utero</option>
+                </optgroup>
+                <optgroup label="Stone Temple Pilots">
+                  <option value="core">Core</option>
+                  <option value="purple">Purple</option>
+                  <option value="no4">No. 4</option>
+                </optgroup>
+                <optgroup label="m&uacute;m">
+                  <option value="ywdtio">Yesterday Was Dramatic - Today Is OK</option>
+                </optgroup>
+                <optgroup label="Robot Science">
+                  <option value="square">square</option>
+                  <option value="doodads">Doodads</option>
+                  <option value="gl">Good Luck</option>
+                </optgroup>
+                <optgroup label="Colugo">
+                  <option value="hyf">Hello Yellow Fellow</option>
+                  <option value="mfp">Music for People</option>
+                  <option value="dp">Dance Party</option>
+                </optgroup>
+              </select>
+            </div>
 
             <label>Genre:</label>
             <div class="checkbox">
