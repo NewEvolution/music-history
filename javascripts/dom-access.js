@@ -1,8 +1,8 @@
 define(function() {
-  var $moreButton = $("#more");
+  var $targetDiv = $(".content");
   return {
     getDomElement: function() {
-      return $moreButton;
+      return $targetDiv;
     }
   };
 });

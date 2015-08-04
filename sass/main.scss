@@ -6,6 +6,29 @@ body {
     color: $primary-color;
 }
 
+nav {
+  background-color: #aaa;
+}
+
+.li-divider {
+  border-right: 1px solid $primary-color;
+}
+
+.row-eq-height {
+  display: -webkit-flex;
+  display:  -webkit-box;
+  display:  -ms-flexbox;
+  display:         flex;
+}
+
 header {
-  background-color: #333;
+  position: fixed;
+}
+
+.left-controls {
+  background-color: rgb(231,231,231);
+}
+
+section:nth-child(2n+1) {
+  background-color: rgb(244,244,244);
 }
