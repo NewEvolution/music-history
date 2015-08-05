@@ -18,5 +18,5 @@ function songWriter(dataArr, domEle) {
 
 // Remove button for song sections
 $(".content").on("click", ".delete", function(e) {
-  $(this).parent().parent().remove();
+  $(this).parent().parent().css("top", "-100px");//.remove();
 });
