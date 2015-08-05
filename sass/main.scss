@@ -1,3 +1,22 @@
+section {
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition:    opacity 0.25s ease-in;
+  -o-transition:      opacity 0.25s ease-in;
+  transition:         opacity 0.25s ease-in;
+  -webkit-transition: box-shadow 0.05s ease;
+  -moz-transition:    box-shadow 0.05s ease;
+  -o-transition:      box-shadow 0.05s ease;
+  transition:         box-shadow 0.05s ease;
+}
+
+section:hover {
+  box-shadow: inset 2px 2px 2px rgba(10,10,10,0.3);
+}
+
+.fade-transition {
+  opacity: 0;
+}
+
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 
@@ -20,7 +39,7 @@ body {
 }
 
 .undernav {
-  margin-top: 5em;
+  margin-top: 5.24em;
 }
 
 .left-controls {
@@ -37,10 +56,6 @@ body {
 
 section:nth-child(2n+1) {
   background-color: rgb(244,244,244);
-}
-
-.fade-animate {
-  background-color: red;
 }
 
 .li-divider {

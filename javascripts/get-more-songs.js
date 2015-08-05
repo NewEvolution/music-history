@@ -5,7 +5,6 @@ define(["jquery"], function($){
         url: "newsongs.json"
       }).done(function(data) {
         sentFunc(data);
-  console.log("clicking");
       });
     }
   };

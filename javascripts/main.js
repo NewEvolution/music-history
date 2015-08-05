@@ -13,18 +13,26 @@ requirejs.config({
 requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
   function($, Handlebars, bootstrap, dom, populate, more){
   populate.getSongs(function(songsObj){
-    require(["hbs!../templates/songs"], function(songTemplate){
-      dom.getDomElement().html(songTemplate(songsObj));
+    require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
+      function(songsTemplate, artistsTemplate, albumsTemplate){
+      dom.getDomElement().html(songsTemplate(songsObj));
+      $("#artist").append(artistsTemplate(songsObj));
+      $("#album").append(albumsTemplate(songsObj));
     });
   });
   $("#more").click(function(e) {
     more.getSongs(function(songsObj){
-      require(["hbs!../templates/songs"], function(songTemplate){
-        dom.getDomElement().append(songTemplate(songsObj));
+      require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
+      function(songsTemplate, artistsTemplate, albumsTemplate){
+        dom.getDomElement().append(songsTemplate(songsObj));
+        $("#artist").append(artistsTemplate(songsObj));
+        $("#album").append(albumsTemplate(songsObj));
       });
     });
   });
   $(".content").on("click", ".delete", function(e) {
-    $(this).parent().parent().addClass("fade-animate");
+    $(this).parent().parent().addClass("fade-transition").on("transitionend oTransitionEnd webkitTransitionEnd msTransitionEnd", function() {
+      $(this).slideUp();
+    });
   });
 });
