@@ -1,10 +1,10 @@
-define(function(){
+define(["jquery"], function($){
   return {
-    getSongs: function(sentFunc, sentDom) {
+    getSongs: function(sentFunc) {
       $.ajax({
         url: "songlist.json"
       }).done(function(data) {
-        sentFunc(data.songs, sentDom);
+        sentFunc(data);
       });
     }
   };

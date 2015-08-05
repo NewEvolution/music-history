@@ -1,10 +1,11 @@
-define(function(){
+define(["jquery"], function($){
   return {
-    getSongs: function(sentFunc, sentDom) {
+    getSongs: function(sentFunc) {
       $.ajax({
         url: "newsongs.json"
       }).done(function(data) {
-        sentFunc(data.songs, sentDom);
+        sentFunc(data);
+  console.log("clicking");
       });
     }
   };

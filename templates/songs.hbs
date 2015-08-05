@@ -1,0 +1,19 @@
+{{#each songs}}
+<section class='row'>
+  <div class='col-xs-1'>
+    <button class='delete btn btn-danger btn-xs'>
+      <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+    </button>
+  </div>
+  <div class='col-xs-11'>
+    <h1>{{title}}</h1>
+    <ul class='list-inline'>
+      <li>{{artist}}</li>
+      <li><span class='li-divider'></span></li>
+      <li>{{album}}</li>
+      <li><span class='li-divider'></span></li>
+      <li>{{genre}}</li>
+    </ul>
+  </div>
+</section>
+{{/each}}

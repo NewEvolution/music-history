@@ -28,11 +28,8 @@ body {
 section:nth-child(2n+1) {
   background-color: #f4f4f4; }
 
-section {
-  -webkit-transition: all 1s ease-out;
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  transition: all 1s ease-out; }
+.fade-animate {
+  background-color: red; }
 
 .li-divider {
   border-right: 1px solid #333; }

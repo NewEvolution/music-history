@@ -39,11 +39,8 @@ section:nth-child(2n+1) {
   background-color: rgb(244,244,244);
 }
 
-section {
-  -webkit-transition: all 1s ease-out;
-  -moz-transition:    all 1s ease-out;
-  -o-transition:      all 1s ease-out;
-  transition:         all 1s ease-out;
+.fade-animate {
+  background-color: red;
 }
 
 .li-divider {

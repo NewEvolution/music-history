@@ -12,23 +12,19 @@ requirejs.config({
 
 requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
   function($, Handlebars, bootstrap, dom, populate, more){
-  populate.getSongs(songWriter, dom.getDomElement());
+  populate.getSongs(function(songsObj){
+    require(["hbs!../templates/songs"], function(songTemplate){
+      dom.getDomElement().html(songTemplate(songsObj));
+    });
+  });
   $("#more").click(function(e) {
-    more.getSongs(songWriter, dom.getDomElement());
+    more.getSongs(function(songsObj){
+      require(["hbs!../templates/songs"], function(songTemplate){
+        dom.getDomElement().append(songTemplate(songsObj));
+      });
+    });
   });
   $(".content").on("click", ".delete", function(e) {
-    $(this).parent().parent().css("opacity", "0").on();
+    $(this).parent().parent().addClass("fade-animate");
   });
 });
-
-
-function songWriter(dataArr, domEle) {
-  for(var i=0; i<dataArr.length; i++) {
-    domEle.append("<section class='row'><div class='col-xs-1'><button class='delete btn btn-danger btn-xs'>" + 
-      "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></div><div class='col-xs-11'><h1>" + 
-      dataArr[i].title + "</h1><ul class='list-inline'><li>" + dataArr[i].artist + 
-      "</li><li><span class='li-divider'></span></li><li>" + dataArr[i].album + 
-      "</li><li><span class='li-divider'></span></li><li>" + dataArr[i].genre + 
-      "</li></ul></div></section>");
-  }
-}
