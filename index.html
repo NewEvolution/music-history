@@ -48,6 +48,7 @@
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2">Artist:&nbsp;&nbsp;</span>
               <select class="form-control" name="artist">
+                <option value="none">None</option>
                 <option value="nirvana">Nirvana</option>
                 <option value="stp">Stone Temple Pilots</option>
                 <option value="mum">m&uacute;m</option>
@@ -59,6 +60,7 @@
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2">Album:</span>
               <select class="form-control" name="album">
+                  <option value="none">None</option>
                 <optgroup label="Nirvana">
                   <option value="bleach">Bleach</option>
                   <option value="nevermind">Nevermind</option>
@@ -86,36 +88,59 @@
               </select>
             </div>
 
-            <label>Genre:</label>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="rock" value="rock">Rock
-              </label>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" aria-label="...">
+                  </span>
+                  <input type="text" class="form-control" readonly aria-label="rock" value="Rock">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" aria-label="...">
+                  </span>
+                  <input type="text" class="form-control" readonly aria-label="Electronic" value="Electronic">
+                </div>
+              </div>
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="pop" value="pop">Pop
-              </label>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" aria-label="...">
+                  </span>
+                  <input type="text" class="form-control" readonly aria-label="pop" value="Pop">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" aria-label="...">
+                  </span>
+                  <input type="text" class="form-control" readonly aria-label="hip hop" value="Hip Hop">
+                </div>
+              </div>
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="blues" value="blues">Blues
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="classical" value="classical">Classical
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="jazz" value="jazz">Jazz
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="hiphop" value="hiphop">Hip&nbsp;hop
-              </label>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" aria-label="...">
+                  </span>
+                  <input type="text" class="form-control" readonly aria-label="blues" value="Blues">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" aria-label="...">
+                  </span>
+                  <input type="text" class="form-control" readonly aria-label="classical" value="Classical">
+                </div>
+              </div>
             </div>
             <input class="btn" type="submit" value="Filter">
           </form>
