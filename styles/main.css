@@ -7,9 +7,6 @@ body {
   z-index: 99;
   width: 100% !important; }
 
-.li-divider {
-  border-right: 1px solid #333; }
-
 .row-eq-height {
   display: -webkit-flex;
   display: -webkit-box;
@@ -22,14 +19,20 @@ body {
 .left-controls {
   background-color: #e7e7e7; }
 
+.input-group {
+  padding-top: 15px !important; }
+
+.filter {
+  margin-top: 15px !important; }
+
 section:nth-child(2n+1) {
   background-color: #f4f4f4; }
+
+.li-divider {
+  border-right: 1px solid #333; }
 
 .delete {
   top: 2.8em;
   position: relative; }
-
-.input-group {
-  padding-top: 15px !important; }
 
 /*# sourceMappingURL=main.css.map */

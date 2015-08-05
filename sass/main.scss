@@ -12,10 +12,6 @@ body {
   width: 100% !important;
 }
 
-.li-divider {
-  border-right: 1px solid $primary-color;
-}
-
 .row-eq-height {
   display: -webkit-flex;
   display:  -webkit-box;
@@ -31,15 +27,23 @@ body {
   background-color: rgb(231,231,231);
 }
 
+.input-group {
+  padding-top: 15px !important;
+}
+
+.filter {
+  margin-top: 15px !important;
+}
+
 section:nth-child(2n+1) {
   background-color: rgb(244,244,244);
+}
+
+.li-divider {
+  border-right: 1px solid $primary-color;
 }
 
 .delete {
   top: 2.8em;
   position: relative;
-}
-
-.input-group {
-  padding-top: 15px !important;
 }
