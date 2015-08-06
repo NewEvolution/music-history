@@ -31,7 +31,8 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
     });
   });
   $(".content").on("click", ".delete", function(e) {
-    $(this).parent().parent().addClass("fade-transition").on("transitionend oTransitionEnd webkitTransitionEnd msTransitionEnd", function() {
+    $(this).parent().parent().addClass("fade-animation").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
+      $(this).addClass("not-visible");
       $(this).slideUp();
     });
   });
