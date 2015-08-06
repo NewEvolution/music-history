@@ -38,6 +38,6 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
   });
   $("#add-submit").click(function(e) {
     e.preventDefault();
-    addSongs();
+    addSongs.songSubmit();
   });
 });
