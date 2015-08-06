@@ -20,16 +20,16 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
       $("#album").append(albumsTemplate(songsObj));
     });
   });
-  $("#more").click(function(e) {
-    more.getSongs(function(songsObj){
-      require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
-      function(songsTemplate, artistsTemplate, albumsTemplate){
-        dom.getDomElement().append(songsTemplate(songsObj));
-        $("#artist").append(artistsTemplate(songsObj));
-        $("#album").append(albumsTemplate(songsObj));
-      });
-    });
-  });
+  // $("#more").click(function(e) {
+  //   more.getSongs(function(songsObj){
+  //     require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
+  //     function(songsTemplate, artistsTemplate, albumsTemplate){
+  //       dom.getDomElement().append(songsTemplate(songsObj));
+  //       $("#artist").append(artistsTemplate(songsObj));
+  //       $("#album").append(albumsTemplate(songsObj));
+  //     });
+  //   });
+  // });
   $(".content").on("click", ".delete", function(e) {
     $(this).parent().parent().addClass("fade-animation").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
       $(this).addClass("not-visible");
