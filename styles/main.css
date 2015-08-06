@@ -9,6 +9,8 @@ body {
 
 nav {
   border-radius: 0 !important; }
+  nav a {
+    font-size: 2em; }
 
 .row-eq-height {
   display: -webkit-flex;
@@ -19,13 +21,16 @@ nav {
 .undernav {
   margin-top: 5.24em; }
 
-.left-controls {
-  background-color: #e7e7e7; }
+.dark-fade {
+  background: -webkit-linear-gradient(#e7e7e7, rgba(231, 231, 231, 0));
+  background: -moz-linear-gradient(#e7e7e7, rgba(231, 231, 231, 0));
+  background: -o-linear-gradient(#e7e7e7, rgba(231, 231, 231, 0));
+  background: linear-gradient(#e7e7e7, rgba(231, 231, 231, 0)); }
 
 .input-group {
   padding-top: 15px !important; }
 
-.filter {
+.form-action {
   margin-top: 15px !important; }
 
 @keyframes fadeout {
@@ -43,10 +48,10 @@ nav {
   visibility: hidden; }
 
 section {
-  -webkit-transition: box-shadow 0.05s ease;
-  -moz-transition: box-shadow 0.05s ease;
-  -o-transition: box-shadow 0.05s ease;
-  transition: box-shadow 0.05s ease; }
+  -webkit-transition: box-shadow 0.1s ease;
+  -moz-transition: box-shadow 0.1s ease;
+  -o-transition: box-shadow 0.1s ease;
+  transition: box-shadow 0.1s ease; }
 
 section:hover {
   box-shadow: inset 2px 2px 2px rgba(10, 10, 10, 0.3); }

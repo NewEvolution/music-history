@@ -1,5 +1,13 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
+$dk-gray-fade-color1: rgba(231,231,231,1);
+$dk-gray-fade-color2: rgba(231,231,231,0);
+@mixin fade-background($color1, $color2) {
+  background: -webkit-linear-gradient($color1, $color2);
+  background:    -moz-linear-gradient($color1, $color2);
+  background:      -o-linear-gradient($color1, $color2);
+  background:         linear-gradient($color1, $color2);
+}
 
 body {
     font: 100% $font-stack;
@@ -14,6 +22,9 @@ body {
 
 nav {
   border-radius: 0 !important;
+  a {
+    font-size: 2em;
+  }
 }
 
 .row-eq-height {
@@ -27,15 +38,15 @@ nav {
   margin-top: 5.24em;
 }
 
-.left-controls {
-  background-color: rgb(231,231,231);
+.dark-fade {
+  @include fade-background($dk-gray-fade-color1, $dk-gray-fade-color2);
 }
 
 .input-group {
   padding-top: 15px !important;
 }
 
-.filter {
+.form-action {
   margin-top: 15px !important;
 }
 
@@ -60,10 +71,10 @@ nav {
 }
 
 section {
-  -webkit-transition: box-shadow 0.05s ease;
-  -moz-transition:    box-shadow 0.05s ease;
-  -o-transition:      box-shadow 0.05s ease;
-  transition:         box-shadow 0.05s ease;
+  -webkit-transition: box-shadow 0.1s ease;
+  -moz-transition:    box-shadow 0.1s ease;
+  -o-transition:      box-shadow 0.1s ease;
+  transition:         box-shadow 0.1s ease;
 }
 
 section:hover {

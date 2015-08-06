@@ -10,8 +10,8 @@ requirejs.config({
   }
 });
 
-requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
-  function($, Handlebars, bootstrap, dom, populate, more){
+requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs", "add-songs"], 
+  function($, Handlebars, bootstrap, dom, populate, more, addSongs){
   populate.getSongs(function(songsObj){
     require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
       function(songsTemplate, artistsTemplate, albumsTemplate){
@@ -35,5 +35,9 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
       $(this).addClass("not-visible");
       $(this).slideUp();
     });
+  });
+  $("#add-submit").click(function(e) {
+    e.preventDefault();
+    addSongs();
   });
 });
