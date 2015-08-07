@@ -1,0 +1,12 @@
+<div class="row fade-in-anim">
+  {{#each genre}}
+  <div class="col-xs-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="genre" aria-label="..." value="{{genre}}">
+      </span>
+      <input type="text" class="form-control" readonly aria-label="{{genre}}" value="{{genre}}">
+    </div>
+  </div>
+  {{/each}}
+</div>

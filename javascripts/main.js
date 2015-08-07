@@ -3,17 +3,70 @@ requirejs.config({
   baseUrl: './javascripts',
   paths: {
     'jquery': '../bower_components/jquery/dist/jquery.min',
+    'firebase': '../bower_components/firebase/firebase',
+    'lodash': '../bower_components/lodash/lodash.min',
     'hbs': '../bower_components/require-handlebars-plugin/hbs',
     'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min'
   },
   shim: {
-    'bootstrap': ['jquery']
+    'bootstrap': ['jquery'],
+    'firebase': {
+      exports: 'Firebase'
+    }
   }
 });
 
 // The main function requiring all our anciliary scripts
-requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs", "add-songs"], 
-  function($, Handlebars, bootstrap, dom, populate, moreSongs, addSongs){
+requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"], 
+  function($, _, _firebase, Handlebars, bootstrap, addSongs){
+  var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
+  myFirebaseRef.child("songs").on("value", function(snapshot) {
+    var retrievedSongsArr = [];
+    for(var key in snapshot.val()) {
+      retrievedSongsArr[retrievedSongsArr.length] = snapshot.val()[key];
+    }
+    // Populates the song list and form elements on initial page load
+    function populatePage(songsObj) {
+      require(["hbs!../templates/artists", "hbs!../templates/albums", "hbs!../templates/songs", "hbs!../templates/genrecheck", "hbs!../templates/genreradio", "hbs!../templates/genreradiosingle", "hbs!../templates/genreradioother"],
+      function(artistsTemplate, albumsTemplate, songsTemplate, genreCheckTemplate, genreRadioTemplate, genreRadioSingleTemplate, genreRadioOtherTemplate){
+        $("#artist").append(artistsTemplate(songsObj));
+        $("#album").append(albumsTemplate(songsObj));
+        // Grabs all the genres for checkboxes or radio buttons
+        var uniqueGenres = _.chain(retrievedSongsArr).uniq("genre").pluck("genre").value();
+        var currentPage = location.pathname.substring(1);
+        $("#genre").html(""); // Wipe the genre check/radio section on change so that it doesn't pile new on old
+        var addonOtherField = false;
+        while(uniqueGenres.length) {
+          var genrePairArr = uniqueGenres.splice(0,2);
+          var genrePairObjArr = [];
+          for(var i=0; i<genrePairArr.length; i++) {
+            var genrePairObj = {};
+            genrePairObj.genre = genrePairArr[i];
+            genrePairObjArr[i] = genrePairObj;
+          }
+          if(currentPage === "index.html") {
+            $("#genre").append(genreCheckTemplate({genre:genrePairObjArr}));
+          } else if (currentPage === "add.html") {
+            if(genrePairObjArr.length === 2) {
+              $("#genre").append(genreRadioTemplate({genre:genrePairObjArr}));
+              addonOtherField = true;
+            } else {
+              $("#genre").append(genreRadioSingleTemplate({genre:genrePairObjArr}));
+              addonOtherField = false;
+            }
+          }
+        }
+        if(addonOtherField && currentPage === "add.html") {
+          $("#genre").append(genreRadioOtherTemplate);
+        }
+        $(".content").html(songsTemplate(songsObj));
+        $("section").each(function() {
+          elementReveal(this);
+        });
+      });
+    }
+    populatePage({songs:retrievedSongsArr});
+  });
 
   // Removes (acutally hides) elements
   function elementRemove(elementToRemove) {
@@ -32,33 +85,11 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
       $(this).removeClass("fade-in-anim");
     });
   }
-
-  // Populates the song list and form elements on initial page load
-  populate.getSongs(function(songsObj){
-    require(["hbs!../templates/artists", "hbs!../templates/albums", "hbs!../templates/songs", "hbs!../templates/genres"],
-    function(artistsTemplate, albumsTemplate, songsTemplate, genreTemplate){
-      var allGenres = [];
-      $("#artist").append(artistsTemplate(songsObj));
-      $("#album").append(albumsTemplate(songsObj));
-      // Grabs all the genres for checkboxes or radio buttons
-      for(var key in songsObj.songs) {
-        var currentGenre = songsObj.songs[key].genre;
-        if(allGenres.indexOf(currentGenre) === -1) {
-          allGenres[allGenres.length] = currentGenre;
-        }
-      }
-      console.log("allGenres", allGenres);
-      dom.getDomElement().html(songsTemplate(songsObj));
-      $("section").each(function() {
-        elementReveal(this);
-      });
-    });
-  });
   // $("#more").click(function(e) {
   //   moreSongs.getSongs(function(songsObj){
   //     require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
   //     function(songsTemplate, artistsTemplate, albumsTemplate){
-  //       dom.getDomElement().append(songsTemplate(songsObj));
+  //       $(".content").append(songsTemplate(songsObj));
   //       $("#artist").append(artistsTemplate(songsObj));
   //       $("#album").append(albumsTemplate(songsObj));
   //     });
