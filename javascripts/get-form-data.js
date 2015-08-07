@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 define(["jquery"], function($){
   return {
     pullData: function() {
