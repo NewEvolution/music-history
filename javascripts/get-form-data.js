@@ -9,7 +9,7 @@ define(["jquery"], function($){
       $genreChoosers = $("input:checked");
       for(var i=0; i<$genreChoosers.length; i++) {
         if($($genreChoosers[i]).val() === "GetOther") {
-          songObj.genre[songObj.genre.length] = $("#genre").val();
+          songObj.genre[songObj.genre.length] = $("#otherGenre").val();
         } else {
           songObj.genre[songObj.genre.length] = $($genreChoosers[i]).val();
         }

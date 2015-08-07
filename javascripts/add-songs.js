@@ -18,15 +18,22 @@ define(["jquery", "get-form-data"], function($, formData){
           alertWindow(key);
           isValid = false;
           break;
-        } else if (inputObj[key].length) {
+        } else if (Array.isArray(inputObj[key]) === true) {
           outputObj[key] = inputObj[key][0];
         } else {
           outputObj[key] = inputObj[key];
         }
       }
-      console.log("inputObj", inputObj);
       if(isValid) {
-        console.log("outputObj", outputObj);
+        $.ajax({
+          url: "https://sizzling-torch-4887.firebaseio.com/songs.json",
+          method: "POST",
+          data: JSON.stringify(outputObj)
+        }).done(function() {
+          $('#add-form').each(function() {
+            this.reset();
+          });
+        });
       }
     }
   };

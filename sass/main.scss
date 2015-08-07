@@ -2,6 +2,7 @@ $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 $dk-gray-fade-color1: rgba(231,231,231,1);
 $dk-gray-fade-color2: rgba(231,231,231,0);
+
 @mixin fade-background($color1, $color2) {
   background: -webkit-linear-gradient($color1, $color2);
   background:    -moz-linear-gradient($color1, $color2);
@@ -59,15 +60,31 @@ nav {
   }
 }
 
-.fade-animation {
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-out-anim {
   -webkit-animation: fadeout 0.2s ease-in;
   -moz-animation:    fadeout 0.2s ease-in;
   -o-animation:      fadeout 0.2s ease-in;
   animation:         fadeout 0.2s ease-in;
 }
 
-.not-visible {
-  visibility: hidden;
+.fade-in-anim {
+  -webkit-animation: fadein 0.2s ease-in;
+  -moz-animation:    fadein 0.2s ease-in;
+  -o-animation:      fadein 0.2s ease-in;
+  animation:         fadein 0.2s ease-in;
+}
+
+.full-transparent {
+  opacity: 0;
 }
 
 section {
