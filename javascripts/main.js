@@ -44,7 +44,7 @@ requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"],
             genrePairObj.genre = genrePairArr[i];
             genrePairObjArr[i] = genrePairObj;
           }
-          if(currentPage === "index.html") {
+          if(currentPage === "index.html" || currentPage === "") {
             $("#genre").append(genreCheckTemplate({genre:genrePairObjArr}));
           } else if (currentPage === "add.html") {
             if(genrePairObjArr.length === 2) {
