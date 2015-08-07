@@ -18,12 +18,18 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
       $(this).slideUp();
     });
   }
+  function elementReveal(elementToReveal) {
+    $(elementToReveal).addClass("fade-animation").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
+      $(this).addClass("not-visible");
+      $(this).slideUp();
+    });
+  }
   populate.getSongs(function(songsObj){
-    require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
-      function(songsTemplate, artistsTemplate, albumsTemplate){
-      dom.getDomElement().html(songsTemplate(songsObj));
+    require(["hbs!../templates/artists", "hbs!../templates/albums", "hbs!../templates/songs"],
+      function(artistsTemplate, albumsTemplate, songsTemplate){
       $("#artist").append(artistsTemplate(songsObj));
       $("#album").append(albumsTemplate(songsObj));
+      dom.getDomElement().html(songsTemplate(songsObj));
     });
   });
   // $("#more").click(function(e) {
