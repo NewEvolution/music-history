@@ -1,4 +1,3 @@
-/*jshint esnext: true */
 define(["jquery"], function($){
   return {
     pullData: function() {
@@ -15,9 +14,7 @@ define(["jquery"], function($){
           songObj.genre[songObj.genre.length] = $($genreChoosers[i]).val();
         }
       }
-      return {
-        songObj
-      };
+      return songObj;
     }
   };
 });

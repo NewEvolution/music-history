@@ -12,6 +12,12 @@ requirejs.config({
 
 requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs", "add-songs"], 
   function($, Handlebars, bootstrap, dom, populate, more, addSongs){
+  function elementRemoval(elementToRemove) {
+    $(elementToRemove).addClass("fade-animation").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
+      $(this).addClass("not-visible");
+      $(this).slideUp();
+    });
+  }
   populate.getSongs(function(songsObj){
     require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
       function(songsTemplate, artistsTemplate, albumsTemplate){
@@ -31,10 +37,7 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
   //   });
   // });
   $(".content").on("click", ".delete", function(e) {
-    $(this).parent().parent().addClass("fade-animation").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
-      $(this).addClass("not-visible");
-      $(this).slideUp();
-    });
+    elementRemoval($(this).parent().parent());
   });
   $("#add-submit").click(function(e) {
     e.preventDefault();
