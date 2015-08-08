@@ -72,14 +72,14 @@ requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"],
   function elementRemove(elementToRemove) {
     $(elementToRemove).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
       $(this).addClass("full-transparent");
+      $(this).removeClass("fade-out-anim");
       $(this).slideUp();
     });
   }
 
   // Reveals hidden elements
   function elementReveal(elementToReveal) {
-    $(elementToReveal).slideDown();
-    $(elementToReveal).addClass("full-transparent");
+    $(elementToReveal).show();
     $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
       $(this).removeClass("full-transparent");
       $(this).removeClass("fade-in-anim");
@@ -104,5 +104,10 @@ requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"],
   });
   $("#filter-submit").click(function(e) {
     e.preventDefault();
+    elementReveal($("#filter-remove"));
+  });
+  $("#filter-remove").click(function(e) {
+    e.preventDefault();
+    elementRemove($("#filter-remove"));
   });
 });

@@ -14,7 +14,7 @@ define(["jquery", "get-form-data"], function($, formData){
       var outputObj = {};
       inputObj = formData.pullData();
       for(var key in inputObj) {
-        if(inputObj[key] === "" || inputObj[key].length === 0) {
+        if(inputObj[key] === "" || inputObj[key].length === 0 || inputObj[key][0] === "") {
           alertWindow(key);
           isValid = false;
           break;
