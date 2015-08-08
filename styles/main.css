@@ -108,8 +108,7 @@ a, .btn {
 .btn {
   background-color: #ededed; }
 
-#artist-dropdown,
-#album-dropdown {
+.dropdown-toggle {
   border-radius: 0px;
   border-right: none; }
 

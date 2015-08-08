@@ -27,38 +27,49 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     }
     // Populates the song list and form elements on initial page load
     function populatePage(songsObj) {
-      require(["hbs!../templates/artists", "hbs!../templates/albums", "hbs!../templates/songs", "hbs!../templates/genrecheck", "hbs!../templates/genreradio", "hbs!../templates/genreradiosingle", "hbs!../templates/genreradioother"],
-      function(artistsTemplate, albumsTemplate, songsTemplate, genreCheckTemplate, genreRadioTemplate, genreRadioSingleTemplate, genreRadioOtherTemplate){
-        $("#artist").append(artistsTemplate(songsObj));
-        $("#album").append(albumsTemplate(songsObj));
-        // Grabs all the genres for checkboxes or radio buttons
+      require(["hbs!../templates/add-select", 
+        "hbs!../templates/add-dropdown",
+        "hbs!../templates/songs", 
+        "hbs!../templates/genrecheck", 
+        "hbs!../templates/genreradio",
+        "hbs!../templates/genreradiosingle", 
+        "hbs!../templates/genreradioother"],
+      function(addSelectTemplate, 
+        addDropdownTemplate,
+        songsTemplate, 
+        genreCheckTemplate, 
+        genreRadioTemplate,
+        genreRadioSingleTemplate, 
+        genreRadioOtherTemplate){
+        var currentPage = location.pathname.substring(1); // get the current HTML page name
+        var uniqueArtists = _.chain(retrievedSongsArr).uniq("artist").pluck("artist").value();
+        $("#artist").html(addSelectTemplate({item:uniqueArtists}));
+        $("#artist-dropdown").html(addDropdownTemplate({artist:uniqueArtists}));
+        var uniqueAlbums = _.chain(retrievedSongsArr).uniq("album").pluck("album").value();
+        $("#album").html(addSelectTemplate({item:uniqueAlbums}));
+        $("#album-dropdown").html(addDropdownTemplate({album:uniqueAlbums}));
+        // Start genre block ======================================================================
         var uniqueGenres = _.chain(retrievedSongsArr).uniq("genre").pluck("genre").value();
-        var currentPage = location.pathname.substring(1);
         $("#genre").html(""); // Wipe the genre check/radio section on change so that it doesn't pile new on old
         var addonOtherField = false;
         while(uniqueGenres.length) {
           var genrePairArr = uniqueGenres.splice(0,2);
-          var genrePairObjArr = [];
-          for(var i=0; i<genrePairArr.length; i++) {
-            var genrePairObj = {};
-            genrePairObj.genre = genrePairArr[i];
-            genrePairObjArr[i] = genrePairObj;
-          }
-          if(currentPage === "index.html" || currentPage === "") {
-            $("#genre").append(genreCheckTemplate({genre:genrePairObjArr}));
-          } else if (currentPage === "add.html") {
-            if(genrePairObjArr.length === 2) {
-              $("#genre").append(genreRadioTemplate({genre:genrePairObjArr}));
+          if(currentPage === "index.html" || currentPage === "") { // Checkboxes if it's on index.html
+            $("#genre").append(genreCheckTemplate({genre:genrePairArr}));
+          } else if (currentPage === "add.html") { // Radio buttons if it's on add.html
+            if(genrePairArr.length === 2) { // 2 by 2 for pairs of genres
+              $("#genre").append(genreRadioTemplate({genre:genrePairArr}));
               addonOtherField = true;
-            } else {
-              $("#genre").append(genreRadioSingleTemplate({genre:genrePairObjArr}));
+            } else { // One-up for single dangling genres + other field
+              $("#genre").append(genreRadioSingleTemplate({genre:genrePairArr}));
               addonOtherField = false;
             }
           }
         }
-        if(addonOtherField && currentPage === "add.html") {
+        if(addonOtherField && currentPage === "add.html") { // Add the full-width other field if extant genres are even
           $("#genre").append(genreRadioOtherTemplate);
         }
+        // End genre block ========================================================================
         $(".content").html(songsTemplate(songsObj));
         $("section").each(function() {
           elementReveal(this);
@@ -92,6 +103,9 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
 
   $(".content").on("click", ".delete", function(e) {
     elementHide($(this).parent().parent());
+    if($("#filter-reset").hasClass("full-transparent")) {
+      elementReveal($("#filter-reset"));
+    }
   });
 
   $("#add-submit").click(function(e) {
@@ -101,17 +115,23 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
 
   $("#filter-submit").click(function(e) {
     e.preventDefault();
-    elementReveal($("#filter-remove"));
+    if($("#filter-reset").hasClass("full-transparent")) {
+      elementReveal($("#filter-reset"));
+    }
   });
 
-  $("#filter-remove").slideUp();
+  $("#filter-reset").slideUp();
 
-  $("#filter-remove").click(function(e) {
+  $("#filter-reset").click(function(e) {
     e.preventDefault();
-    elementHide($("#filter-remove"));
+    elementHide($("#filter-reset"));
     var allHiddenSongs = $("section.row.full-transparent");
     for(var i=0; i<allHiddenSongs.length; i++) {
       elementReveal(allHiddenSongs[i]);
     }
+  });
+
+  $(".artist-dr-btn").click(function(e){
+    console.log($(this));
   });
 });
