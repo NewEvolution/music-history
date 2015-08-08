@@ -13,6 +13,20 @@ $lt-gray-fade-color2: rgba(255,255,255,0.8);
   background:         linear-gradient($color1, $color2);
 }
 
+@mixin add-transition($property, $duration, $timing-func, $delay) {
+  -webkit-transition: $property $duration $timing-func $delay;
+  -moz-transition:    $property $duration $timing-func $delay;
+  -o-transition:      $property $duration $timing-func $delay;
+  transition:         $property $duration $timing-func $delay;
+}
+
+@mixin add-animation($anim-name, $duration, $timing-func, $delay, $iteration, $direction, $fill-mode, $play-state) {
+  -webkit-animation: $anim-name $duration $timing-func $delay $iteration $direction $fill-mode $play-state;
+  -moz-animation:    $anim-name $duration $timing-func $delay $iteration $direction $fill-mode $play-state;
+  -o-animation:      $anim-name $duration $timing-func $delay $iteration $direction $fill-mode $play-state;
+  animation:         $anim-name $duration $timing-func $delay $iteration $direction $fill-mode $play-state;
+}
+
 body {
     font: 100% $font-stack;
     color: $primary-color;
@@ -31,13 +45,6 @@ nav {
   a {
     font-size: 2em;
   }
-}
-
-.row-eq-height {
-  display: -webkit-flex;
-  display:  -webkit-box;
-  display:  -ms-flexbox;
-  display:         flex;
 }
 
 .undernav {
@@ -75,17 +82,11 @@ nav {
 }
 
 .fade-out-anim {
-  -webkit-animation: fadeout 0.2s ease-in;
-  -moz-animation:    fadeout 0.2s ease-in;
-  -o-animation:      fadeout 0.2s ease-in;
-  animation:         fadeout 0.2s ease-in;
+  @include add-animation(fadeout, 0.2s, ease-in, 0s, 1, normal, both, running);
 }
 
 .fade-in-anim {
-  -webkit-animation: fadein 0.2s ease-in;
-  -moz-animation:    fadein 0.2s ease-in;
-  -o-animation:      fadein 0.2s ease-in;
-  animation:         fadein 0.2s ease-in;
+  @include add-animation(fadein, 0.2s, ease-in, 0s, 1, normal, both, running);
 }
 
 .full-transparent {
@@ -94,12 +95,15 @@ nav {
 
 section {
   @include fade-background($lt-gray-fade-color1, $lt-gray-fade-color2);
-  -webkit-transition: box-shadow 0.1s ease;
-  -moz-transition:    box-shadow 0.1s ease;
-  -o-transition:      box-shadow 0.1s ease;
-  transition:         box-shadow 0.1s ease;
+  @include add-transition(box-shadow, 0.1s, ease, 0s);
+  .btn {
+    @include add-transition(box-shadow, 0.1s, ease, 0s);
+  }
   &:hover {
     box-shadow: inset 2px 2px 2px rgba(10,10,10,0.3);
+    .btn {
+      box-shadow: 2px 2px 2px rgba(10,10,10,0.3);
+    }
   }
   h1 {
     font-size: 3em;
@@ -124,5 +128,11 @@ section {
   position: relative;
   span {
     top: 0.2em;
+  }
+}
+
+a, .btn {
+  &:hover {
+    color: $accent-color !important;
   }
 }
