@@ -109,5 +109,9 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
   $("#filter-remove").click(function(e) {
     e.preventDefault();
     elementHide($("#filter-remove"));
+    var allHiddenSongs = $("section.row.full-transparent");
+    for(var i=0; i<allHiddenSongs.length; i++) {
+      elementReveal(allHiddenSongs[i]);
+    }
   });
 });
