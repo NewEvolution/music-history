@@ -48,17 +48,41 @@
           <form class="form-group" id="add-form" action="#" method="POST">
 
             <div class="input-group">
-              <span class="input-group-addon">Title:&nbsp;&nbsp;&nbsp;</span>
+              <span class="input-group-addon">Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <input type="text" class="form-control" name="title" id="title" placeholder="Enter Song Title">
             </div>
 
             <div class="input-group">
               <span class="input-group-addon">Artist:&nbsp;&nbsp;</span>
+              <div class="input-group-btn">
+                <button type="button" id="artist-dropdown" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
               <input type="text" class="form-control" name="artist" id="artist" placeholder="Enter Artist Name">
             </div>
 
             <div class="input-group">
               <span class="input-group-addon">Album:</span>
+              <div class="input-group-btn">
+                <button type="button" id="album-dropdown" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
               <input type="text" class="form-control" name="album" id="album" value="" placeholder="Enter Album Name">
             </div>
 

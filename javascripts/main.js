@@ -18,7 +18,7 @@ requirejs.config({
 
 // The main function requiring all our anciliary scripts
 requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"], 
-  function($, _, _firebase, Handlebars, bootstrap, addSongs){
+function($, _, _firebase, Handlebars, bootstrap, addSongs){
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   myFirebaseRef.child("songs").on("value", function(snapshot) {
     var retrievedSongsArr = [];
@@ -68,46 +68,46 @@ requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"],
     populatePage({songs:retrievedSongsArr});
   });
 
-  // Removes (acutally hides) elements
-  function elementRemove(elementToRemove) {
-    $(elementToRemove).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
-      $(this).addClass("full-transparent");
-      $(this).removeClass("fade-out-anim");
-      $(this).slideUp();
+  // Hides elements
+  function elementHide(elementToHide) {
+    $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
+      if(e.originalEvent.animationName === "fadeout") {
+        $(this).addClass("full-transparent");
+        $(this).removeClass("fade-out-anim");
+        $(this).slideUp();
+      }
     });
   }
 
   // Reveals hidden elements
   function elementReveal(elementToReveal) {
-    $(elementToReveal).show();
-    $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function() {
-      $(this).removeClass("full-transparent");
-      $(this).removeClass("fade-in-anim");
+    $(elementToReveal).slideDown();
+    $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
+      if(e.originalEvent.animationName === "fadein") {
+        $(this).removeClass("full-transparent");
+        $(this).removeClass("fade-in-anim");
+      }
     });
   }
-  // $("#more").click(function(e) {
-  //   moreSongs.getSongs(function(songsObj){
-  //     require(["hbs!../templates/songs", "hbs!../templates/artists", "hbs!../templates/albums"],
-  //     function(songsTemplate, artistsTemplate, albumsTemplate){
-  //       $(".content").append(songsTemplate(songsObj));
-  //       $("#artist").append(artistsTemplate(songsObj));
-  //       $("#album").append(albumsTemplate(songsObj));
-  //     });
-  //   });
-  // });
+
   $(".content").on("click", ".delete", function(e) {
-    elementRemove($(this).parent().parent());
+    elementHide($(this).parent().parent());
   });
+
   $("#add-submit").click(function(e) {
     e.preventDefault();
     addSongs.songSubmit();
   });
+
   $("#filter-submit").click(function(e) {
     e.preventDefault();
     elementReveal($("#filter-remove"));
   });
+
+  $("#filter-remove").slideUp();
+
   $("#filter-remove").click(function(e) {
     e.preventDefault();
-    elementRemove($("#filter-remove"));
+    elementHide($("#filter-remove"));
   });
 });
