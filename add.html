@@ -59,10 +59,7 @@
                   <span class="caret"></span>
                 </button>
                 <ul id="artist-dropdown" class="dropdown-menu">
-                  <li><a class="artist-dr-btn" name="fish" href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li><a href="#">Separated link</a></li>
+                  <!-- Populate via add-dropdown.hbs -->
                 </ul>
               </div>
               <input type="text" class="form-control" name="artist" id="artist" placeholder="Enter Artist Name">
@@ -75,88 +72,14 @@
                   <span class="caret"></span>
                 </button>
                 <ul id="album-dropdown" class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li><a href="#">Separated link</a></li>
+                  <!-- Populate via add-dropdown.hbs -->
                 </ul>
               </div>
               <input type="text" class="form-control" name="album" id="album" value="" placeholder="Enter Album Name">
             </div>
 
-            <div id="genre"><!-- 
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Rock">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="rock" value="Rock">
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Electronic">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="Electronic" value="Electronic">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Pop">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="pop" value="Pop">
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Hip Hop">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="hip hop" value="Hip Hop">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Blues">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="blues" value="Blues">
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Classical">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="classical" value="Classical">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="Folk">
-                    </span>
-                    <input type="text" class="form-control" readonly aria-label="folk" value="Folk">
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <input type="radio" name="genre" aria-label="..." value="GetOther">
-                    </span>
-                    <input type="text" id="otherGenre" class="form-control" aria-label="..." placeholder="Other">
-                  </div>
-                </div>
-              </div> -->
+            <div id="genre">
+              <!-- Populate via genreradio*.hbs -->
             </div>
             <input class="btn btn-default form-action" id="add-submit" type="submit" value="Submit">
           </form>

@@ -27,20 +27,11 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     }
     // Populates the song list and form elements on initial page load
     function populatePage(songsObj) {
-      require(["hbs!../templates/add-select", 
-        "hbs!../templates/add-dropdown",
-        "hbs!../templates/songs", 
-        "hbs!../templates/genrecheck", 
-        "hbs!../templates/genreradio",
-        "hbs!../templates/genreradiosingle", 
+      require(["hbs!../templates/add-select", "hbs!../templates/add-dropdown", "hbs!../templates/songs",
+        "hbs!../templates/genrecheck", "hbs!../templates/genreradio", "hbs!../templates/genreradiosingle",
         "hbs!../templates/genreradioother"],
-      function(addSelectTemplate, 
-        addDropdownTemplate,
-        songsTemplate, 
-        genreCheckTemplate, 
-        genreRadioTemplate,
-        genreRadioSingleTemplate, 
-        genreRadioOtherTemplate){
+      function(addSelectTemplate, addDropdownTemplate, songsTemplate, genreCheckTemplate, genreRadioTemplate,
+        genreRadioSingleTemplate, genreRadioOtherTemplate){
         var currentPage = location.pathname.substring(1); // get the current HTML page name
         var uniqueArtists = _.chain(retrievedSongsArr).uniq("artist").pluck("artist").value();
         $("#artist").html(addSelectTemplate({item:uniqueArtists}));
@@ -129,9 +120,16 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     for(var i=0; i<allHiddenSongs.length; i++) {
       elementReveal(allHiddenSongs[i]);
     }
+    $('#filter-form').each(function() {
+      this.reset();
+    });
   });
 
-  $(".artist-dr-btn").click(function(e){
-    console.log($(this));
+  $("#artist-dropdown").on("click", ".artist-dr-item", function(e) {
+    $("#artist").val(this.name);
+  });
+  
+  $("#album-dropdown").on("click", ".album-dr-item", function(e) {
+    $("#album").val(this.name);
   });
 });

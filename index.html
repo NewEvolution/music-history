@@ -45,7 +45,7 @@
 
         <!-- Left conrol area -->
         <div class="col-sm-5 col-md-4 dark-fade">
-          <form class="form-group" action="#" method="POST">
+          <form id="filter-form" class="form-group" action="#" method="POST">
 
             <!-- <div class="input-group">
               <span class="input-group-addon">Song Length:</span>
@@ -55,16 +55,19 @@
             <div class="input-group">
               <span class="input-group-addon">Artist:&nbsp;&nbsp;</span>
               <select class="form-control" name="artist" id="artist">
+                <!-- Populate via add-select.hbs -->
               </select>
             </div>
 
             <div class="input-group">
               <span class="input-group-addon">Album:</span>
               <select class="form-control" name="album" id="album">
+                <!-- Populate via add-select.hbs -->
               </select>
             </div>
 
             <div id="genre">
+              <!-- Populate via genrecheck.hbs -->
             </div>
             <input class="btn btn-default form-action" id="filter-submit" type="submit" value="Filter">
             <input class="btn btn-default form-action full-transparent" id="filter-reset" type="submit" value="Reset">
