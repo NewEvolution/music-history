@@ -20,6 +20,7 @@ requirejs.config({
 requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"], 
 function($, _, _firebase, Handlebars, bootstrap, addSongs){
   var retrievedSongsArr = []; // Array of songs to be populated from DB
+
   // Begin execute on DB change block ============================================================= //
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   myFirebaseRef.child("songs").on("value", function(snapshot) {
@@ -41,7 +42,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
         var uniqueAlbums = _.chain(retrievedSongsArr).uniq("album").pluck("album").value();
         $("#filter_album-select").html(addSelectTemplate({item:uniqueAlbums}));
         $("#add_album-dropdown").html(addDropdownTemplate({album:uniqueAlbums}));
-        
+
         // Start genre block ======================================================================
         var uniqueGenres = _.chain(retrievedSongsArr).uniq("genre").pluck("genre").value();
         $("#genre").html(""); // Wipe the genre check/radio section on change so that it doesn't pile new on old
@@ -64,6 +65,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
           $("#genre").append(genreRadioOtherTemplate);
         }
         // End genre block ========================================================================
+
         $(".content").html(songsTemplate(songsObj));
         $("section").each(function() {
           elementReveal(this);
@@ -95,7 +97,8 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
   }
 
   $("#filter_artist-select").change(function(e) {
-    var artistAlbums = _.chain(retrievedSongsArr).uniq("album").pluck("album").value();
+    var selectedArtist = $(this).val();
+    var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).pluck("album").value();
     console.log(artistAlbums);
   });
 
