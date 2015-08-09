@@ -1,5 +1,5 @@
 {{#each songs}}
-<section class='row'>
+<section class='row song-section'>
   <div class='col-xs-1'>
     <button class='hide-btn btn btn-default btn-xs'>
       <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
@@ -8,11 +8,11 @@
   <div class='col-xs-11'>
     <h1>{{title}}</h1>
     <ul class='list-inline'>
-      <li>Artist: <em>{{artist}}</em></li>
+      <li class="artist-label">Artist: <em>{{artist}}</em></li>
       <li><span class='li-divider'></span></li>
-      <li>Album: <em>{{album}}</em></li>
+      <li class="album-label">Album: <em>{{album}}</em></li>
       <li><span class='li-divider'></span></li>
-      <li>Genre: <em>{{genre}}</em></li>
+      <li class="genre-label">Genre: <em>{{genre}}</em></li>
     </ul>
   </div>
 </section>

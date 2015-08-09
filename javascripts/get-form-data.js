@@ -2,7 +2,9 @@ define(["jquery"], function($){
   return {
     pullData: function() {
       var songObj = {};
-      songObj.title = $("#title").val();
+      if($("#title").length !== 0) {
+        songObj.title = $("#title").val();
+      }
       songObj.artist = $("#artist").val();
       songObj.album = $("#album").val();
       songObj.genre = [];
