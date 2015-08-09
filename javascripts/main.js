@@ -39,7 +39,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
       }
     });
   }
-  
+
   var retrievedSongsArr = []; // Array of songs to be populated from DB
 
   // Begin execute on DB change block ============================================================= //
@@ -151,6 +151,8 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
           $('#filter-form').each(function() {
             this.reset();
           });
+          $("#filter_artist-select").html(addSelectTemplate({item:uniqueArtists}));
+          $("#filter_album-select").html(addSelectTemplate({item:uniqueAlbums}));
         });
 
         $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
