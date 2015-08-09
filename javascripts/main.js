@@ -19,6 +19,27 @@ requirejs.config({
 // The main function requiring all our anciliary scripts
 requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"], 
 function($, _, _firebase, Handlebars, bootstrap, addSongs){
+
+  function elementHide(elementToHide) {
+    $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
+      if(e.originalEvent.animationName === "fadeout") {
+        $(this).addClass("full-transparent");
+        $(this).removeClass("fade-out-anim");
+        $(this).slideUp();
+      }
+    });
+  }
+
+  function elementReveal(elementToReveal) {
+    $(elementToReveal).slideDown();
+    $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
+      if(e.originalEvent.animationName === "fadein") {
+        $(this).removeClass("full-transparent");
+        $(this).removeClass("fade-in-anim");
+      }
+    });
+  }
+  
   var retrievedSongsArr = []; // Array of songs to be populated from DB
 
   // Begin execute on DB change block ============================================================= //
@@ -67,79 +88,81 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
         // End genre block ========================================================================
 
         $(".content").html(songsTemplate(songsObj));
-        $("section").each(function() {
+        $("section").each(function() { // Fade in all the song displays
           elementReveal(this);
+        });
+
+        // When selecting a new artist
+        $("#filter_artist-select").change(function(e) {
+          var selectedArtist = $(this).val();
+          if(selectedArtist === "all") { // Reset album list to show all albums
+            $("#filter_album-select").html(addSelectTemplate({item:uniqueAlbums}));
+          } else { // Populate the album select with only the chosen artists albums
+            var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).pluck("album").value();
+            $("#filter_album-select").html(addSelectTemplate({item:artistAlbums}));
+            if(artistAlbums.length === 1) { // If the artist only has one album, set the album
+              $("#filter_album-select").val(artistAlbums[0]);
+            }
+          }
+        });
+
+        // When selecting a new album
+        $("#filter_album-select").change(function(e) {
+          var selectedAlbum = $(this).val();
+          if(selectedAlbum === "all") { // Reset artist list to show all artists
+            $("#filter_artist-select").html(addSelectTemplate({item:uniqueArtists}));
+          } else { // Populate the artist select with only the artist who matches the album
+            var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).pluck("artist").value();
+            $("#filter_artist-select").html(addSelectTemplate({item:albumArtist}));
+            if(albumArtist.length === 1) { // If only one artist has this album, set the artist
+              $("#filter_artist-select").val(albumArtist[0]);
+            }
+          }
+        });
+
+        $(".content").on("click", ".hide-btn", function(e) {
+          elementHide($(this).parent().parent());
+          if($("#filter-reset").hasClass("full-transparent")) {
+            elementReveal($("#filter-reset"));
+          }
+        });
+
+        $("#add-submit").click(function(e) {
+          e.preventDefault();
+          addSongs.songSubmit();
+        });
+
+        $("#filter-submit").click(function(e) {
+          e.preventDefault();
+          if($("#filter-reset").hasClass("full-transparent")) {
+            elementReveal($("#filter-reset"));
+          }
+        });
+
+        $("#filter-reset").slideUp(); // Initially hidden so all its reveals look the same
+
+        $("#filter-reset").click(function(e) {
+          e.preventDefault();
+          elementHide($("#filter-reset"));
+          var allHiddenSongs = $("section.row.full-transparent");
+          for(var i=0; i<allHiddenSongs.length; i++) {
+            elementReveal(allHiddenSongs[i]);
+          }
+          $('#filter-form').each(function() {
+            this.reset();
+          });
+        });
+
+        $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
+          $("#artist").val(this.name);
+        });
+        
+        $("#add_album-dropdown").on("click", ".album-dr-item", function(e) {
+          $("#album").val(this.name);
         });
       });
     }
     populatePage({songs:retrievedSongsArr});
   });
   // End execute on DB change block =============================================================== //
-
-  function elementHide(elementToHide) {
-    $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
-      if(e.originalEvent.animationName === "fadeout") {
-        $(this).addClass("full-transparent");
-        $(this).removeClass("fade-out-anim");
-        $(this).slideUp();
-      }
-    });
-  }
-
-  function elementReveal(elementToReveal) {
-    $(elementToReveal).slideDown();
-    $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
-      if(e.originalEvent.animationName === "fadein") {
-        $(this).removeClass("full-transparent");
-        $(this).removeClass("fade-in-anim");
-      }
-    });
-  }
-
-  $("#filter_artist-select").change(function(e) {
-    var selectedArtist = $(this).val();
-    var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).pluck("album").value();
-    console.log(artistAlbums);
-  });
-
-  $(".content").on("click", ".hide-btn", function(e) {
-    elementHide($(this).parent().parent());
-    if($("#filter-reset").hasClass("full-transparent")) {
-      elementReveal($("#filter-reset"));
-    }
-  });
-
-  $("#add-submit").click(function(e) {
-    e.preventDefault();
-    addSongs.songSubmit();
-  });
-
-  $("#filter-submit").click(function(e) {
-    e.preventDefault();
-    if($("#filter-reset").hasClass("full-transparent")) {
-      elementReveal($("#filter-reset"));
-    }
-  });
-
-  $("#filter-reset").slideUp(); // Initially hidden so all reveals look the same
-
-  $("#filter-reset").click(function(e) {
-    e.preventDefault();
-    elementHide($("#filter-reset"));
-    var allHiddenSongs = $("section.row.full-transparent");
-    for(var i=0; i<allHiddenSongs.length; i++) {
-      elementReveal(allHiddenSongs[i]);
-    }
-    $('#filter-form').each(function() {
-      this.reset();
-    });
-  });
-
-  $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
-    $("#artist").val(this.name);
-  });
-  
-  $("#add_album-dropdown").on("click", ".album-dr-item", function(e) {
-    $("#album").val(this.name);
-  });
 });
