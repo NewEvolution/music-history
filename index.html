@@ -13,7 +13,8 @@
 
       <!-- Header Navigation Bar -->
       <div class="fixed-nav-holder row">
-        <nav class="navbar navbar-default">
+        <div class="col-md-1"></div>
+        <nav class="navbar navbar-default col-md-10">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
@@ -37,11 +38,12 @@
             </form>
           </div>
         </nav>
+        <div class="col-md-1"></div>
       </div>
 
-      <!-- Two column body layout -->
+      <!-- Column body layout -->
       <div class="row undernav">
-
+        <div class="col-md-1"></div>
 
         <!-- Left conrol area -->
         <div class="col-sm-5 col-md-4 dark-fade">
@@ -54,14 +56,14 @@
 
             <div class="input-group">
               <span class="input-group-addon">Artist:&nbsp;&nbsp;</span>
-              <select class="form-control" name="artist" id="filter_artist-select">
+              <select class="form-control filter-input" name="artist" id="filter_artist-select">
                 <!-- Populate via add-select.hbs -->
               </select>
             </div>
 
             <div class="input-group">
               <span class="input-group-addon">Album:</span>
-              <select class="form-control" name="album" id="filter_album-select">
+              <select class="form-control filter-input" name="album" id="filter_album-select">
                 <!-- Populate via add-select.hbs -->
               </select>
             </div>
@@ -76,11 +78,13 @@
 
 
         <!-- Right content area -->
-        <div class="col-sm-7 col-md-8 right-content">
+        <div class="col-sm-7 col-md-6 right-content">
           <div class="content">
           </div>
         </div>
       </div>
+      <div class="col-md-1"></div>
+
     </div>
     <script data-main="./javascripts/main" src="bower_components/requirejs/require.js"></script>
   </body>

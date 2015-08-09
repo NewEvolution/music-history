@@ -87,16 +87,22 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
         }
         // End genre block ========================================================================
 
+        // Start song list block ==================================================================
         $(".content").html(songsTemplate(songsObj));
         $("section").each(function() { // Fade in all the song displays
           elementReveal(this);
         });
 
-        // When selecting an artist
-        $("#filter_artist-select").change(function(e) {
+        $(".content").on("click", ".hide-btn", function(e) {
+          elementHide($(this).parent().parent());
           if($("#filter-reset").hasClass("full-transparent")) {
             elementReveal($("#filter-reset"));
           }
+        });
+        // End song list block ===================================================================
+
+        // Start filter form block ================================================================
+        $("#filter_artist-select").change(function(e) {
           var selectedArtist = $(this).val();
           if(selectedArtist === "all") { // Reset album list to show all albums
             $("#filter_album-select").html(addSelectTemplate({item:uniqueAlbums}));
@@ -109,11 +115,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
           }
         });
 
-        // When selecting an album
         $("#filter_album-select").change(function(e) {
-          if($("#filter-reset").hasClass("full-transparent")) {
-            elementReveal($("#filter-reset"));
-          }
           var selectedAlbum = $(this).val();
           if(selectedAlbum === "all") { // Reset artist list to show all artists
             $("#filter_artist-select").html(addSelectTemplate({item:uniqueArtists}));
@@ -126,19 +128,6 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
           }
         });
 
-        $(".content").on("click", ".hide-btn", function(e) {
-          elementHide($(this).parent().parent());
-          if($("#filter-reset").hasClass("full-transparent")) {
-            elementReveal($("#filter-reset"));
-          }
-        });
-
-        $("#add-submit").click(function(e) {
-          e.preventDefault();
-          addSongs.songSubmit();
-          elementHide($("#add-reset"));
-        });
-
         $("#filter-submit").click(function(e) {
           e.preventDefault();
           if($("#filter-reset").hasClass("full-transparent")) {
@@ -147,7 +136,12 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
         });
 
         $("#filter-reset").slideUp(); // Initially hidden so all its reveals look the same
-        $("#add-reset").slideUp(); // Initially hidden so all its reveals look the same
+
+        $(".filter-input").change(function(e) {
+          if($("#filter-reset").hasClass("full-transparent")) {
+            elementReveal($("#filter-reset"));
+          }
+        });
 
         $("#filter-reset").click(function(e) {
           e.preventDefault();
@@ -162,8 +156,13 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
           $("#filter_artist-select").html(addSelectTemplate({item:uniqueArtists}));
           $("#filter_album-select").html(addSelectTemplate({item:uniqueAlbums}));
         });
+        // End filter form block ==================================================================
 
+        // Start add form block ===================================================================
         $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
+          if($("#add-reset").hasClass("full-transparent")) {
+            elementReveal($("#add-reset"));
+          }
           var selectedArtist = this.name;
           $("#artist").val(selectedArtist);
           var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).pluck("album").value();
@@ -171,11 +170,39 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
         });
         
         $("#add_album-dropdown").on("click", ".album-dr-item", function(e) {
+          if($("#add-reset").hasClass("full-transparent")) {
+            elementReveal($("#add-reset"));
+          }
           var selectedAlbum = this.name;
           $("#album").val(selectedAlbum);
           var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).pluck("artist").value();
           $("#add_artist-dropdown").html(addDropdownTemplate({artist:albumArtist}));
         });
+
+        $("#add-submit").click(function(e) {
+          e.preventDefault();
+          addSongs.songSubmit();
+          elementHide($("#add-reset"));
+        });
+
+        $("#add-reset").slideUp(); // Initially hidden so all its reveals look the same
+
+        $(".add-input").change(function(e) {
+          if($("#add-reset").hasClass("full-transparent")) {
+            elementReveal($("#add-reset"));
+          }
+        });
+
+        $("#add-reset").click(function(e) {
+          e.preventDefault();
+          elementHide($("#add-reset"));
+          $('#add-form').each(function() {
+            this.reset();
+          });
+          $("#add_artist-dropdown").html(addDropdownTemplate({artist:uniqueArtists}));
+          $("#add_album-dropdown").html(addDropdownTemplate({album:uniqueAlbums}));
+        });
+        // End add form block =====================================================================
       });
     }
     populatePage({songs:retrievedSongsArr});
