@@ -91,10 +91,10 @@ section {
 .li-divider {
   border-right: 1px solid #009090; }
 
-.delete {
+.hide-btn {
   top: 2.8em;
   position: relative; }
-  .delete span {
+  .hide-btn span {
     top: 0.2em; }
 
 a, .btn {

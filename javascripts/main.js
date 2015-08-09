@@ -19,26 +19,29 @@ requirejs.config({
 // The main function requiring all our anciliary scripts
 requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs"], 
 function($, _, _firebase, Handlebars, bootstrap, addSongs){
+  var retrievedSongsArr = []; // Array of songs to be populated from DB
+  // Begin execute on DB change block ============================================================= //
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   myFirebaseRef.child("songs").on("value", function(snapshot) {
-    var retrievedSongsArr = [];
     for(var key in snapshot.val()) {
-      retrievedSongsArr[retrievedSongsArr.length] = snapshot.val()[key];
+      retrievedSongsArr[retrievedSongsArr.length] = snapshot.val()[key]; // Turn JSON object into array
     }
-    // Populates the song list and form elements on initial page load
-    function populatePage(songsObj) {
+    function populatePage(songsObj) { // Populates the song list and form elements on initial page load
       require(["hbs!../templates/add-select", "hbs!../templates/add-dropdown", "hbs!../templates/songs",
         "hbs!../templates/genrecheck", "hbs!../templates/genreradio", "hbs!../templates/genreradiosingle",
         "hbs!../templates/genreradioother"],
       function(addSelectTemplate, addDropdownTemplate, songsTemplate, genreCheckTemplate, genreRadioTemplate,
         genreRadioSingleTemplate, genreRadioOtherTemplate){
         var currentPage = location.pathname.substring(1); // get the current HTML page name
+
         var uniqueArtists = _.chain(retrievedSongsArr).uniq("artist").pluck("artist").value();
-        $("#artist").html(addSelectTemplate({item:uniqueArtists}));
-        $("#artist-dropdown").html(addDropdownTemplate({artist:uniqueArtists}));
+        $("#filter_artist-select").html(addSelectTemplate({item:uniqueArtists}));
+        $("#add_artist-dropdown").html(addDropdownTemplate({artist:uniqueArtists}));
+
         var uniqueAlbums = _.chain(retrievedSongsArr).uniq("album").pluck("album").value();
-        $("#album").html(addSelectTemplate({item:uniqueAlbums}));
-        $("#album-dropdown").html(addDropdownTemplate({album:uniqueAlbums}));
+        $("#filter_album-select").html(addSelectTemplate({item:uniqueAlbums}));
+        $("#add_album-dropdown").html(addDropdownTemplate({album:uniqueAlbums}));
+        
         // Start genre block ======================================================================
         var uniqueGenres = _.chain(retrievedSongsArr).uniq("genre").pluck("genre").value();
         $("#genre").html(""); // Wipe the genre check/radio section on change so that it doesn't pile new on old
@@ -69,8 +72,8 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     }
     populatePage({songs:retrievedSongsArr});
   });
+  // End execute on DB change block =============================================================== //
 
-  // Hides elements
   function elementHide(elementToHide) {
     $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
       if(e.originalEvent.animationName === "fadeout") {
@@ -81,7 +84,6 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     });
   }
 
-  // Reveals hidden elements
   function elementReveal(elementToReveal) {
     $(elementToReveal).slideDown();
     $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
@@ -92,7 +94,12 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     });
   }
 
-  $(".content").on("click", ".delete", function(e) {
+  $("#filter_artist-select").change(function(e) {
+    var artistAlbums = _.chain(retrievedSongsArr).uniq("album").pluck("album").value();
+    console.log(artistAlbums);
+  });
+
+  $(".content").on("click", ".hide-btn", function(e) {
     elementHide($(this).parent().parent());
     if($("#filter-reset").hasClass("full-transparent")) {
       elementReveal($("#filter-reset"));
@@ -111,7 +118,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     }
   });
 
-  $("#filter-reset").slideUp();
+  $("#filter-reset").slideUp(); // Initially hidden so all reveals look the same
 
   $("#filter-reset").click(function(e) {
     e.preventDefault();
@@ -125,11 +132,11 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs){
     });
   });
 
-  $("#artist-dropdown").on("click", ".artist-dr-item", function(e) {
+  $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
     $("#artist").val(this.name);
   });
   
-  $("#album-dropdown").on("click", ".album-dr-item", function(e) {
+  $("#add_album-dropdown").on("click", ".album-dr-item", function(e) {
     $("#album").val(this.name);
   });
 });
