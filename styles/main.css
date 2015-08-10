@@ -110,6 +110,9 @@ a, .btn {
   a:hover, .btn:hover {
     color: #009090 !important; }
 
+.modal-body em {
+  color: #009090; }
+
 .btn-danger,
 .btn-success {
   color: #333 !important; }

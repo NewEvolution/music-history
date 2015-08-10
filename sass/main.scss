@@ -149,6 +149,10 @@ a, .btn {
   }
 }
 
+.modal-body em {
+  color: $accent-color;
+}
+
 .btn-danger,
 .btn-success {
   color: $primary-color !important;
