@@ -40,11 +40,10 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
     });
   }
 
-  var retrievedSongsArr = []; // Array of songs to be populated from DB
-
   // Begin execute on DB change block ============================================================= //
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   myFirebaseRef.child("songs").on("value", function(snapshot) {
+    var retrievedSongsArr = []; // Array of songs to be populated from DB
     for(var key in snapshot.val()) {
       retrievedSongsArr[retrievedSongsArr.length] = snapshot.val()[key]; // Turn JSON object into array
     }
@@ -112,9 +111,6 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           } else { // Populate the album select with only the chosen artists albums
             var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).uniq("artist").pluck("album").value();
             $("#album").html(addSelectTemplate({item:artistAlbums}));
-            if(artistAlbums.length === 1) { // If the artist only has one album, set the album
-              $("#album").val(artistAlbums[0]);
-            }
           }
         });
 
@@ -125,9 +121,6 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           } else { // Populate the artist select with only the artist who matches the album
             var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).uniq("album").pluck("artist").value();
             $("#artist").html(addSelectTemplate({item:albumArtist}));
-            if(albumArtist.length === 1) { // If only one artist has this album, set the artist
-              $("#artist").val(albumArtist[0]);
-            }
           }
         });
 
