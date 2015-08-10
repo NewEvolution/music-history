@@ -4,10 +4,16 @@ body {
   background: url(../images/bg-overlay.png), #c8c8c8 url(../images/stone-bg.jpg) no-repeat top left fixed;
   background-size: cover; }
 
+.modal-body {
+  font-size: 1.5em !important; }
+
 .fixed-nav-holder {
   position: fixed;
   z-index: 99;
   width: 100% !important; }
+
+.navbar {
+  margin-bottom: 0 !important; }
 
 nav {
   border-radius: 0 !important; }
@@ -91,11 +97,10 @@ section {
 .li-divider {
   border-right: 1px solid #009090; }
 
-.hide-btn {
-  top: 2.8em;
-  position: relative; }
-  .hide-btn span {
-    top: 0.2em; }
+.song-btn {
+  margin-top: 0.5em; }
+  .song-btn span {
+    top: 0.1em; }
 
 a, .btn {
   -webkit-transition: color 0.1s ease 0s;
@@ -104,6 +109,13 @@ a, .btn {
   transition: color 0.1s ease 0s; }
   a:hover, .btn:hover {
     color: #009090 !important; }
+
+.btn-danger,
+.btn-success {
+  color: #333 !important; }
+  .btn-danger:hover,
+  .btn-success:hover {
+    color: white !important; }
 
 .btn {
   background-color: #ededed; }

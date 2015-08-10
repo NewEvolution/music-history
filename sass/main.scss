@@ -35,10 +35,18 @@ body {
     background-size: cover;
 }
 
+.modal-body {
+  font-size: 1.5em !important;
+}
+
 .fixed-nav-holder {
   position: fixed;
   z-index: 99;
   width: 100% !important;
+}
+
+.navbar {
+  margin-bottom: 0 !important;
 }
 
 nav {
@@ -127,11 +135,10 @@ section {
   border-right: 1px solid $accent-color;
 }
 
-.hide-btn {
-  top: 2.8em;
-  position: relative;
+.song-btn {
+  margin-top: 0.5em;
   span {
-    top: 0.2em;
+    top: 0.1em;
   }
 }
 
@@ -139,6 +146,14 @@ a, .btn {
   @include add-transition(color, 0.1s, ease, 0s);
   &:hover {
     color: $accent-color !important;
+  }
+}
+
+.btn-danger,
+.btn-success {
+  color: $primary-color !important;
+  &:hover {
+    color: white !important;
   }
 }
 

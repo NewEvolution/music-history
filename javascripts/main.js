@@ -40,14 +40,27 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
     });
   }
 
+  function getSongKey(clickedElement, sentSongsObj) {
+    var clickedSongObj = {};
+    clickedSongObj.title = $(clickedElement).parents(".song-section").find("h1").html();
+    clickedSongObj.artist = $(clickedElement).parents(".song-section").find(".artist-label em").html();
+    clickedSongObj.album = $(clickedElement).parents(".song-section").find(".album-label em").html();
+    clickedSongObj.genre = $(clickedElement).parents(".song-section").find(".genre-label em").html();
+    var clickedSongKey = _.findKey(sentSongsObj, clickedSongObj);
+    console.log("clickedSongKey", clickedSongKey);
+    console.log("clickedSongObj", clickedSongObj);
+    return [clickedSongKey, clickedSongObj];
+  }
+
   // Begin execute on DB change block ============================================================= //
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   myFirebaseRef.child("songs").on("value", function(snapshot) {
+    var retrievedSongsObj = snapshot.val();
     var retrievedSongsArr = []; // Array of songs to be populated from DB
-    for(var key in snapshot.val()) {
-      retrievedSongsArr[retrievedSongsArr.length] = snapshot.val()[key]; // Turn JSON object into array
+    for(var key in retrievedSongsObj) {
+      retrievedSongsArr[retrievedSongsArr.length] = retrievedSongsObj[key]; // Turn JSON object into array
     }
-    function populatePage(songsObj) { // Populates the song list and form elements on initial page load
+    function populatePage(sentSongsObj) { // Populates the song list and form elements on initial page load
       require(["hbs!../templates/add-select", "hbs!../templates/add-dropdown", "hbs!../templates/songs",
         "hbs!../templates/genrecheck", "hbs!../templates/genreradio", "hbs!../templates/genreradiosingle",
         "hbs!../templates/genreradioother"],
@@ -90,7 +103,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
         // End genre block ========================================================================
 
         // Start song list block ==================================================================
-        $(".content").html(songsTemplate(songsObj));
+        $(".content").html(songsTemplate(sentSongsObj));
         $("section").each(function() { // Fade in all the song displays
           elementReveal(this);
         });
@@ -100,6 +113,23 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           if($("#filter-reset").hasClass("full-transparent")) {
             elementReveal($("#filter-reset"));
           }
+        });
+
+        $(".content").on("click", ".edit-btn", function(e) {
+          getSongKey($(this), retrievedSongsObj);
+          $('#edit-modal').modal('show');
+        });
+
+        $("#confirm-edit").click(function(e) {
+          getSongKey($(this), retrievedSongsObj);
+        });
+
+        $(".content").on("click", ".delete-btn", function(e) {
+          $('#delete-modal').modal('show');
+        });
+
+        $("#confirm-delete").click(function(e) {
+          getSongKey($(this), retrievedSongsObj);
         });
         // End song list block ===================================================================
 
