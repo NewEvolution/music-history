@@ -132,6 +132,9 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           e.preventDefault();
           if($("#filter-reset").hasClass("full-transparent") === false) {
             var sectionsToHide = filterSongs.songsFilter();
+            for(var i=0; i<sectionsToHide.length; i++) {
+              elementHide(sectionsToHide[i]);
+            }
           }
         });
 

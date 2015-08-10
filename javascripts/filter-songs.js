@@ -1,8 +1,8 @@
 define(["jquery", "get-form-data"], function($, formData){
-  var sectionsToHide = [];
   return {
     songsFilter: function() {
-      selectedObj = formData.pullData();
+      var sectionsToHide = [];
+      var selectedObj = formData.pullData();
       if(selectedObj.artist !== "all") {
         $("section .artist-label em").each(function(e) {
           if($(this).html() !== selectedObj.artist) {
@@ -26,7 +26,6 @@ define(["jquery", "get-form-data"], function($, formData){
           }
         });
       }
-    console.log("sectionsToHide", sectionsToHide);
     return sectionsToHide;
     }
   };
