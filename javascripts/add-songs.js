@@ -25,6 +25,7 @@ define(["jquery", "get-form-data"], function($, formData){
         }
       }
       if(isValid) {
+        isValid = false;
         $.ajax({
           url: "https://sizzling-torch-4887.firebaseio.com/songs.json",
           method: "POST",
