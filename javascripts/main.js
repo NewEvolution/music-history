@@ -118,9 +118,9 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           var selectedAlbum = $(this).val();
           if(selectedAlbum === "all") { // Reset artist list to show all artists
             $("#artist").html(addSelectTemplate({item:uniqueArtists}));
-          } else { // Populate the artist select with only the artist who matches the album
-            var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).uniq("artist").pluck("artist").value();
-            $("#artist").html(addSelectTemplate({item:albumArtist}));
+          // } else { // Populate the artist select with only the artist who matches the album
+          //   var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).uniq("artist").pluck("artist").value();
+          //   $("#artist").html(addSelectTemplate({item:albumArtist}));
           }
         });
 
