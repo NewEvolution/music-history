@@ -110,7 +110,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           if(selectedArtist === "all") { // Reset album list to show all albums
             $("#album").html(addSelectTemplate({item:uniqueAlbums}));
           } else { // Populate the album select with only the chosen artists albums
-            var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).pluck("album").value();
+            var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).uniq("artist").pluck("album").value();
             $("#album").html(addSelectTemplate({item:artistAlbums}));
             if(artistAlbums.length === 1) { // If the artist only has one album, set the album
               $("#album").val(artistAlbums[0]);
@@ -123,7 +123,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           if(selectedAlbum === "all") { // Reset artist list to show all artists
             $("#artist").html(addSelectTemplate({item:uniqueArtists}));
           } else { // Populate the artist select with only the artist who matches the album
-            var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).pluck("artist").value();
+            var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).uniq("album").pluck("artist").value();
             $("#artist").html(addSelectTemplate({item:albumArtist}));
             if(albumArtist.length === 1) { // If only one artist has this album, set the artist
               $("#artist").val(albumArtist[0]);
@@ -171,7 +171,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           }
           var selectedArtist = this.name;
           $("#artist").val(selectedArtist);
-          var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).pluck("album").value();
+          var artistAlbums = _.chain(retrievedSongsArr).filter({'artist': selectedArtist}).uniq("artist").pluck("album").value();
           $("#add_album-dropdown").html(addDropdownTemplate({album:artistAlbums}));
         });
         
@@ -181,7 +181,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           }
           var selectedAlbum = this.name;
           $("#album").val(selectedAlbum);
-          var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).pluck("artist").value();
+          var albumArtist = _.chain(retrievedSongsArr).filter({'album': selectedAlbum}).uniq("album").pluck("artist").value();
           $("#add_artist-dropdown").html(addDropdownTemplate({artist:albumArtist}));
         });
 
