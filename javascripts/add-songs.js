@@ -18,7 +18,7 @@ define(["jquery", "get-form-data"], function($, formData){
           alertWindow(key);
           isValid = false;
           break;
-        } else if (Array.isArray(inputObj[key]) === true) {
+        } else if (Array.isArray(inputObj[key])) {
           outputObj[key] = inputObj[key][0];
         } else {
           outputObj[key] = inputObj[key];
