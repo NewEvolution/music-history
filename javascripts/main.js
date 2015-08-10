@@ -40,15 +40,13 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
     });
   }
 
-  function getSongKey(clickedElement, sentSongsObj) {
+  function getClickedSong(clickedElement, sentSongsObj) {
     var clickedSongObj = {};
     clickedSongObj.title = $(clickedElement).parents(".song-section").find("h1").html();
     clickedSongObj.artist = $(clickedElement).parents(".song-section").find(".artist-label em").html();
     clickedSongObj.album = $(clickedElement).parents(".song-section").find(".album-label em").html();
     clickedSongObj.genre = $(clickedElement).parents(".song-section").find(".genre-label em").html();
     var clickedSongKey = _.findKey(sentSongsObj, clickedSongObj);
-    console.log("clickedSongKey", clickedSongKey);
-    console.log("clickedSongObj", clickedSongObj);
     return [clickedSongKey, clickedSongObj];
   }
 
@@ -115,21 +113,30 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
           }
         });
 
+        var songToEdit = "";
         $(".content").on("click", ".edit-btn", function(e) {
-          getSongKey($(this), retrievedSongsObj);
+          songToEdit = getClickedSong($(this), retrievedSongsObj);
+          $("#edit-title").val(songToEdit[1].title);
+          $("#edit-artist").val(songToEdit[1].artist);
+          $("#edit-album").val(songToEdit[1].album);
+          $("#edit-genre").val(songToEdit[1].genre);
           $('#edit-modal').modal('show');
         });
 
         $("#confirm-edit").click(function(e) {
-          getSongKey($(this), retrievedSongsObj);
+          console.log("songToEdit", songToEdit);
+          songToEdit = "";
         });
 
+        var songToDelete = "";
         $(".content").on("click", ".delete-btn", function(e) {
+          songToDelete = getClickedSong($(this), retrievedSongsObj);
           $('#delete-modal').modal('show');
         });
 
         $("#confirm-delete").click(function(e) {
-          getSongKey($(this), retrievedSongsObj);
+          myFirebaseRef.child("songs").child(songToDelete[0]).set(null);
+          songToDelete = "";
         });
         // End song list block ===================================================================
 

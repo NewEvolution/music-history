@@ -1,4 +1,5 @@
-define(["jquery", "get-form-data"], function($, formData){
+define(["jquery", "firebase", "get-form-data"], function($, _firebase, formData){
+  var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/songs");
   var alertWindow = function(missingField) {
     var aOrAn = "";
     if(missingField.charAt(0) == "a") {
@@ -26,11 +27,7 @@ define(["jquery", "get-form-data"], function($, formData){
       }
       if(isValid) {
         isValid = false;
-        $.ajax({
-          url: "https://sizzling-torch-4887.firebaseio.com/songs.json",
-          method: "POST",
-          data: JSON.stringify(outputObj)
-        }).done(function() {
+        myFirebaseRef.push(outputObj, function() {
           $('#add-form').each(function() {
             this.reset();
           });

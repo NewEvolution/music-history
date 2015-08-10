@@ -17,7 +17,7 @@
             <h4 class="modal-title" id="delete-modal-label">Confirm Song Deletion</h4>
           </div>
           <div class="modal-body">
-            This will permanently delete the song from the database.
+            The song <span id=""></span> by <span></span> will permanently deleted from the database.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -30,14 +30,14 @@
 
     <!-- Start edit modal -->
     <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="edit-modal-label">Edit Song Information</h4>
           </div>
           <div class="modal-body">
-            <form class="form-group" id="add-form" action="#" method="POST">
+            <form class="form-group" id="edit-form" action="#" method="POST">
               <div class="input-group">
                 <span class="input-group-addon">Title:&nbsp;&nbsp;&nbsp;</span>
                 <input type="text" class="form-control" name="title" id="edit-title">
