@@ -1,4 +1,4 @@
-define(["jquery", "get-form-data"], function($, formData){
+define(["jquery", "lodash", "get-form-data"], function($, _, formData){
   return {
     songsFilter: function() {
       var sectionsToHide = [];
@@ -19,10 +19,8 @@ define(["jquery", "get-form-data"], function($, formData){
       }
       if(selectedObj.genre.length !== 0) {
         $("section .genre-label em").each(function(e) {
-          for(var i=0; i<selectedObj.genre.length; i++) {
-            if($(this).html() !== selectedObj.genre[i]) {
-              sectionsToHide[sectionsToHide.length] = $(this).parents(".song-section");
-            }
+          if(_.indexOf(selectedObj.genre, $(this).html()) === -1) {
+            sectionsToHide[sectionsToHide.length] = $(this).parents(".song-section");
           }
         });
       }

@@ -68,6 +68,9 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs){
         var uniqueGenres = _.chain(retrievedSongsArr).uniq("genre").pluck("genre").value();
         $("#genre").html(""); // Wipe the genre check/radio section on change so that it doesn't pile new on old
         var addonOtherField = false;
+        if(uniqueGenres.length === 0) {
+          addonOtherField = true;
+        }
         while(uniqueGenres.length) {
           var genrePairArr = uniqueGenres.splice(0,2);
           if(currentPage === "index.html" || currentPage === "") { // Checkboxes if it's on index.html
