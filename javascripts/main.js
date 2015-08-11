@@ -186,7 +186,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs, template
 
   $("#filter-reset").slideUp(); // Initially hidden so all its reveals look the same
 
-  $(".filter-input").change(function(e) { // Reveal the reset buton when any form field changes
+  $("#filter-form").on( "change", ".filter-input", function(e) { // Reveal the reset buton when any form field changes
     if($("#filter-reset").hasClass("full-transparent")) {
       elementReveal($("#filter-reset"));
     }
@@ -236,7 +236,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs, template
 
   $("#add-reset").slideUp(); // Initially hidden so all its reveals look the same
 
-  $(".add-input").change(function(e) { // Reveal the reset buton when any form field changes
+  $("#add-form").on("change", ".add-input", function(e) { // Reveal the reset buton when any form field changes
     if($("#add-reset").hasClass("full-transparent")) {
       elementReveal($("#add-reset"));
     }
