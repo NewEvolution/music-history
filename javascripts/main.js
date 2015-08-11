@@ -59,6 +59,7 @@ function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs, template
   var songToEdit = [];
   var songToDelete = [];
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
+  
   // Begin execute on DB change block ============================================================= //
   myFirebaseRef.child("songs").on("value", function(snapshot) {
     retrievedSongsObj = snapshot.val();
