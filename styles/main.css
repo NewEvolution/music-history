@@ -127,4 +127,7 @@ a, .btn {
   border-radius: 0px;
   border-right: none; }
 
+.song-section:last-of-type {
+  margin-bottom: 50px; }
+
 /*# sourceMappingURL=main.css.map */
