@@ -1,4 +1,4 @@
-define(["jquery"], function($){
+define(["jquery", "multiuse-functions"], function($, mf){
   return {
     handlers: function(){
       $(".content").on("click", ".hide-btn", function(e) {
@@ -9,7 +9,7 @@ define(["jquery"], function($){
       });
 
       $(".content").on("click", ".edit-btn", function(e) {
-        songToEdit = getClickedSong($(this), retrievedSongsObj);
+        songToEdit = mf.getClickedSong($(this), retrievedSongsObj);
         $("#edit-title").val(songToEdit[1].title);
         $("#edit-artist").val(songToEdit[1].artist);
         $("#edit-album").val(songToEdit[1].album);
@@ -28,7 +28,7 @@ define(["jquery"], function($){
       });
 
       $(".content").on("click", ".delete-btn", function(e) {
-        songToDelete = getClickedSong($(this), retrievedSongsObj);
+        songToDelete = mf.getClickedSong($(this), retrievedSongsObj);
         $("#delete-title").html(songToDelete[1].title);
         $("#delete-artist").html(songToDelete[1].artist);
         $('#delete-modal').modal('show');

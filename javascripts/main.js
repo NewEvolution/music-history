@@ -18,8 +18,8 @@ requirejs.config({
 });
 
 // The main function requiring all our anciliary scripts
-requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "q", "add-songs", "filter-songs", "song-list-handlers", "hb-template"], 
-function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, slhandlers, template){
+requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "q", "add-songs", "filter-songs", "multiuse-functions", "song-list-handlers", "hb-template"], 
+function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, muf, sl, template){
 
   function elementHide(elementToHide) {
     $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
@@ -113,7 +113,7 @@ function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, slhan
   });
   // End execute on DB change block =============================================================== //
 
-  slhandlers.handlers();
+  sl.handlers();
 
   // Start filter form block ======================================================================
   $("#artist").change(function(e) {
