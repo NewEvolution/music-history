@@ -6,7 +6,8 @@ requirejs.config({
     'firebase': '../bower_components/firebase/firebase',
     'lodash': '../bower_components/lodash/lodash.min',
     'hbs': '../bower_components/require-handlebars-plugin/hbs',
-    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min'
+    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min',
+    'q': '../bower_components/q/q'
   },
   shim: {
     'bootstrap': ['jquery'],
@@ -17,8 +18,8 @@ requirejs.config({
 });
 
 // The main function requiring all our anciliary scripts
-requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "add-songs", "filter-songs", "hb-template"], 
-function($, _, _firebase, Handlebars, bootstrap, addSongs, filterSongs, template){
+requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "q", "add-songs", "filter-songs", "hb-template"], 
+function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, template){
 
   function elementHide(elementToHide) {
     $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
