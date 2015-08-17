@@ -128,7 +128,6 @@ function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, templ
     $("#edit-album").val(songToEdit[1].album);
     $("#edit-genre").val(songToEdit[1].genre);
     $('#edit-modal').modal('show');
-    console.log("songToEdit  ", songToEdit);
   });
 
   $("#confirm-edit").click(function(e) {
@@ -146,7 +145,6 @@ function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, templ
     $("#delete-title").html(songToDelete[1].title);
     $("#delete-artist").html(songToDelete[1].artist);
     $('#delete-modal').modal('show');
-    console.log("songToDelete", songToDelete);
   });
 
   $("#confirm-delete").click(function(e) {
