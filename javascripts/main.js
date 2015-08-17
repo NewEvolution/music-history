@@ -18,8 +18,8 @@ requirejs.config({
 });
 
 // The main function requiring all our anciliary scripts
-requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "q", "add-songs", "filter-songs", "hb-template"], 
-function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, template){
+requirejs(["jquery", "lodash", "firebase", "hbs", "bootstrap", "q", "add-songs", "filter-songs", "song-list-handlers", "hb-template"], 
+function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, slhandlers, template){
 
   function elementHide(elementToHide) {
     $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
@@ -113,45 +113,7 @@ function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, templ
   });
   // End execute on DB change block =============================================================== //
 
-  // Start song list handler block ================================================================
-  $(".content").on("click", ".hide-btn", function(e) {
-    elementHide($(this).parents(".song-section"));
-    if($("#filter-reset").hasClass("full-transparent")) {
-      elementReveal($("#filter-reset"));
-    }
-  });
-
-  $(".content").on("click", ".edit-btn", function(e) {
-    songToEdit = getClickedSong($(this), retrievedSongsObj);
-    $("#edit-title").val(songToEdit[1].title);
-    $("#edit-artist").val(songToEdit[1].artist);
-    $("#edit-album").val(songToEdit[1].album);
-    $("#edit-genre").val(songToEdit[1].genre);
-    $('#edit-modal').modal('show');
-  });
-
-  $("#confirm-edit").click(function(e) {
-    var editedSong = {};
-    editedSong.title = $("#edit-title").val();
-    editedSong.artist = $("#edit-artist").val();
-    editedSong.album = $("#edit-album").val();
-    editedSong.genre = $("#edit-genre").val();
-    myFirebaseRef.child("songs").child(songToEdit[0]).set(editedSong);
-    songToEdit = [];
-  });
-
-  $(".content").on("click", ".delete-btn", function(e) {
-    songToDelete = getClickedSong($(this), retrievedSongsObj);
-    $("#delete-title").html(songToDelete[1].title);
-    $("#delete-artist").html(songToDelete[1].artist);
-    $('#delete-modal').modal('show');
-  });
-
-  $("#confirm-delete").click(function(e) {
-    myFirebaseRef.child("songs").child(songToDelete[0]).set(null);
-    songToDelete = [];
-  });
-  // End song list handler block ==================================================================
+  slhandlers.handlers();
 
   // Start filter form block ======================================================================
   $("#artist").change(function(e) {
