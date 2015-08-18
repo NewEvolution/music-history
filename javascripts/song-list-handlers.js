@@ -1,15 +1,17 @@
 define(["jquery", "multiuse-functions"], function($, mf){
+  var songToEdit = [];
+  var songToDelete =[];
   return {
-    handlers: function(){
+    handlers: function(myFirebaseRef){
       $(".content").on("click", ".hide-btn", function(e) {
-        elementHide($(this).parents(".song-section"));
+        mf.elementHide($(this).parents(".song-section"));
         if($("#filter-reset").hasClass("full-transparent")) {
-          elementReveal($("#filter-reset"));
+          mf.elementReveal($("#filter-reset"));
         }
       });
 
       $(".content").on("click", ".edit-btn", function(e) {
-        songToEdit = mf.getClickedSong($(this), retrievedSongsObj);
+        songToEdit = mf.getClickedSong($(this));
         $("#edit-title").val(songToEdit[1].title);
         $("#edit-artist").val(songToEdit[1].artist);
         $("#edit-album").val(songToEdit[1].album);
@@ -28,7 +30,7 @@ define(["jquery", "multiuse-functions"], function($, mf){
       });
 
       $(".content").on("click", ".delete-btn", function(e) {
-        songToDelete = mf.getClickedSong($(this), retrievedSongsObj);
+        songToDelete = mf.getClickedSong($(this));
         $("#delete-title").html(songToDelete[1].title);
         $("#delete-artist").html(songToDelete[1].artist);
         $('#delete-modal').modal('show');

@@ -1,5 +1,6 @@
-define(["jquery", "lodash"], function($, _){
+define(["jquery"], function($){
   var functionObj = {};
+
   functionObj.elementHide = function(elementToHide) {
     $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
       if(e.originalEvent.animationName === "fadeout") {
@@ -8,7 +9,7 @@ define(["jquery", "lodash"], function($, _){
         $(this).slideUp();
       }
     });
-  }
+  };
 
   functionObj.elementReveal = function(elementToReveal) {
     $(elementToReveal).slideDown();
@@ -18,16 +19,17 @@ define(["jquery", "lodash"], function($, _){
         $(this).removeClass("fade-in-anim");
       }
     });
-  }
+  };
 
-  functionObj.getClickedSong = function(clickedElement, sentSongsObj) {
+  functionObj.getClickedSong = function(clickedElement) {
     var clickedSongObj = {};
     clickedSongObj.title = $(clickedElement).parents(".song-section").find("h1").html();
     clickedSongObj.artist = $(clickedElement).parents(".song-section").find(".artist-label em").html();
     clickedSongObj.album = $(clickedElement).parents(".song-section").find(".album-label em").html();
     clickedSongObj.genre = $(clickedElement).parents(".song-section").find(".genre-label em").html();
-    var clickedSongKey = _.findKey(sentSongsObj, clickedSongObj);
+    var clickedSongKey = $(clickedElement).parents(".song-section").attr("key");
     return [clickedSongKey, clickedSongObj];
-  }
+  };
+
   return functionObj;
 });
