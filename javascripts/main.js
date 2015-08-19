@@ -24,20 +24,21 @@ function($, _, _firebase, Handlebars, bootstrap, Q, addSongs, filterSongs, popul
 
   var myFirebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   var currentPage = location.pathname.substring(1); // get the current HTML page name
+  var deferred = Q.defer();
   
   // Execute on DB change
   myFirebaseRef.child("songs").on("value", function(snapshot) {
     var retrievedSongsObj = snapshot.val();
-    populatePromise = populate.populatePage(retrievedSongsObj, currentPage);
+    populate.populatePage(retrievedSongsObj, currentPage, deferred);
   });
 
   // Song List Handlers
   slh.handlers(myFirebaseRef);
 
-
-  // Filter Form Handlers
-  fh.handlers(uniqueArtists, uniqueAlbums, retrievedSongsArr);
-
-  // Add Form Handlers
-  ah.handlers(uniqueArtists, uniqueAlbums, retrievedSongsArr);
+  deferred.promise.then(function(promisedObj) {
+    // Filter Form Handlers
+    fh.handlers(promisedObj.u_artists, promisedObj.u_albums, promisedObj.songs_a);
+    // Add Form Handlers
+    ah.handlers(promisedObj.u_artists, promisedObj.u_albums, promisedObj.songs_a);
+  });
 });

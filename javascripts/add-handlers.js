@@ -1,6 +1,6 @@
 define(["jquery", "lodash", "multiuse-functions", "hb-template", "add-songs"], function($, _, mf, template, addSongs){
   return {
-    handlers: function(retrievedSongsArr) {
+    handlers: function(uniqueArtists, uniqueAlbums, retrievedSongsArr) {
       $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
         if($("#add-reset").hasClass("full-transparent")) {
           mf.elementReveal($("#add-reset"));

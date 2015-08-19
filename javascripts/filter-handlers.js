@@ -1,6 +1,6 @@
 define(["jquery", "multiuse-functions", "hb-template", "filter-songs"], function($, mf, template, filterSongs){
   return {
-    handlers: function(retrievedSongsArr) {
+    handlers: function(uniqueArtists, uniqueAlbums, retrievedSongsArr) {
       $("#artist").change(function(e) {
         var selectedArtist = $(this).val();
         if(selectedArtist === "all") { // Reset album list to show all albums

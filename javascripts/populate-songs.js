@@ -1,8 +1,7 @@
 define(["jquery", "lodash", "q", "hb-template", "multiuse-functions"], function($, _, Q, template, mf){
-  var deferred = Q.defer();
   return {
-    thePromise: deferred.promise,
-    populatePage: function(sentSongsObj, currentPage) { // Populates the song list and form elements on initial page load
+    populatePage: function(sentSongsObj, currentPage, thePromise) { // Populates the song list and form elements on initial page load
+      var promisedObj = {};
       var retrievedSongsArr = [];
       for(var key in sentSongsObj) {
         retrievedSongsArr[retrievedSongsArr.length] = sentSongsObj[key]; // Turn JSON object into array
@@ -45,7 +44,10 @@ define(["jquery", "lodash", "q", "hb-template", "multiuse-functions"], function(
       $("section").each(function() { // Fade in all the song displays
         mf.elementReveal(this);
       });
-      deferred.resolve(retrievedSongsArr, uniqueArtists, uniqueAlbums);
+    promisedObj.u_artists = uniqueArtists;
+    promisedObj.u_albums = uniqueAlbums;
+    promisedObj.songs_a = retrievedSongsArr;
+    thePromise.resolve(promisedObj);
     }
   };
 });
