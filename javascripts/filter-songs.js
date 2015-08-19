@@ -1,4 +1,7 @@
-define(["jquery", "lodash", "get-form-data"], function($, _, formData){
+define(function(require){
+  var $ = require("jquery");
+  var _ = require("lodash");
+  var formData = require("get-form-data");
   return {
     songsFilter: function() {
       var sectionsToHide = [];
