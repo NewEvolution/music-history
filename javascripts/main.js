@@ -18,8 +18,8 @@ requirejs.config({
 });
 
 // The main function requiring all our anciliary scripts
-requirejs(["firebase", "hbs", "bootstrap", "q", "populate-songs", "song-list-handlers", "filter-handlers", "add-handlers"],
-function(_firebase, Handlebars, bootstrap, Q, populate, slh, fh, ah){
+requirejs(["dependencies", "q", "populate-songs", "song-list-handlers", "filter-handlers", "add-handlers"],
+function(dependencies, Q, populate, slh, fh, ah){
 
   var firebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   var currentPage = location.pathname.substring(1); // get the current HTML page name
