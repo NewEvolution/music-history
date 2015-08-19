@@ -1,15 +1,11 @@
-define(["hbs!../templates/add-select", "hbs!../templates/add-dropdown", "hbs!../templates/songs",
-  "hbs!../templates/genrecheck", "hbs!../templates/genreradio", "hbs!../templates/genreradiosingle",
-  "hbs!../templates/genreradioother"],
-function(addSelectTemplate, addDropdownTemplate, songsTemplate, genreCheckTemplate, genreRadioTemplate,
-  genreRadioSingleTemplate, genreRadioOtherTemplate) {
+define(function(require) {
   var templateObj = {};
-  templateObj.addSelect = addSelectTemplate;
-  templateObj.addDropdown = addDropdownTemplate;
-  templateObj.songs = songsTemplate;
-  templateObj.genreCheck = genreCheckTemplate;
-  templateObj.genreRadio = genreRadioTemplate;
-  templateObj.genreRadioSingle = genreRadioSingleTemplate;
-  templateObj.genreRadioOther = genreRadioOtherTemplate;
+  templateObj.addSelect = require("hbs!../templates/add-select");
+  templateObj.addDropdown = require("hbs!../templates/add-dropdown");
+  templateObj.songs = require("hbs!../templates/songs");
+  templateObj.genreCheck = require("hbs!../templates/genrecheck");
+  templateObj.genreRadio = require("hbs!../templates/genreradio");
+  templateObj.genreRadioSingle = require("hbs!../templates/genreradiosingle");
+  templateObj.genreRadioOther = require("hbs!../templates/genreradioother");
   return templateObj;
 });

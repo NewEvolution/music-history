@@ -1,6 +1,13 @@
-define(["jquery", "multiuse-functions", "hb-template", "filter-songs"], function($, mf, template, filterSongs){
+define(function(require){
+  var $ = require("jquery");
+  var template = require("hb-template");
+  var mf = require("multiuse-functions");
+  var filterSongs = require("filter-songs");
   return {
     handlers: function(uniqueArtists, uniqueAlbums, retrievedSongsArr) {
+      // Initially hidden so all its reveals look the same
+      $("#filter-reset").slideUp();
+      // Artist dropdown menu
       $("#artist").change(function(e) {
         var selectedArtist = $(this).val();
         if(selectedArtist === "all") { // Reset album list to show all albums
@@ -10,14 +17,14 @@ define(["jquery", "multiuse-functions", "hb-template", "filter-songs"], function
           $("#album").html(template.addSelect({item:artistAlbums}));
         }
       });
-
+      // Album dropdown menu
       $("#album").change(function(e) {
         var selectedAlbum = $(this).val();
         if(selectedAlbum === "all") { // Reset artist list to show all artists
           $("#artist").html(template.addSelect({item:uniqueArtists}));
         }
       });
-
+      // Submit button
       $("#filter-submit").click(function(e) {
         e.preventDefault();
         if($("#filter-reset").hasClass("full-transparent") === false) {
@@ -27,15 +34,13 @@ define(["jquery", "multiuse-functions", "hb-template", "filter-songs"], function
           }
         }
       });
-
-      $("#filter-reset").slideUp(); // Initially hidden so all its reveals look the same
-
-      $("#filter-form").on( "change", ".filter-input", function(e) { // Reveal the reset buton when any form field changes
+      // Reveal the reset buton when any form field changes
+      $("#filter-form").on( "change", ".filter-input", function(e) {
         if($("#filter-reset").hasClass("full-transparent")) {
           mf.elementReveal($("#filter-reset"));
         }
       });
-
+      // Reset Button
       $("#filter-reset").click(function(e) {
         e.preventDefault();
         mf.elementHide($("#filter-reset"));

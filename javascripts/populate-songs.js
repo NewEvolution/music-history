@@ -1,4 +1,8 @@
-define(["jquery", "lodash", "q", "hb-template", "multiuse-functions"], function($, _, Q, template, mf){
+define(function(require){
+  var $ = require("jquery");
+  var _ = require("lodash");
+  var template = require("hb-template");
+  var mf = require("multiuse-functions");
   return {
     populatePage: function(sentSongsObj, currentPage, thePromise) { // Populates the song list and form elements on initial page load
       var promisedObj = {};
