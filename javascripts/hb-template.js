@@ -1,11 +1,11 @@
 define(function(require) {
-  var templateObj = {};
-  templateObj.addSelect = require("hbs!../templates/add-select");
-  templateObj.addDropdown = require("hbs!../templates/add-dropdown");
-  templateObj.songs = require("hbs!../templates/songs");
-  templateObj.genreCheck = require("hbs!../templates/genrecheck");
-  templateObj.genreRadio = require("hbs!../templates/genreradio");
-  templateObj.genreRadioSingle = require("hbs!../templates/genreradiosingle");
-  templateObj.genreRadioOther = require("hbs!../templates/genreradioother");
-  return templateObj;
+  return {
+    songs: require("hbs!../templates/songs"),
+    addSelect: require("hbs!../templates/add-select"),
+    genreCheck: require("hbs!../templates/genrecheck"),
+    genreRadio: require("hbs!../templates/genreradio"),
+    addDropdown: require("hbs!../templates/add-dropdown"),
+    genreRadioOther: require("hbs!../templates/genreradioother"),
+    genreRadioSingle: require("hbs!../templates/genreradiosingle")
+  };
 });
