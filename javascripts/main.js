@@ -20,20 +20,4 @@ requirejs.config({
 // The main function requiring all our anciliary scripts
 requirejs(["dependencies", "authentication"],
 function(dependencies, auth){
-  var ref = new Firebase("https://sizzling-torch-4887.firebaseio.com");
-  var authData = ref.getAuth();
-  if(authData === null) {
-    ref.authWithOAuthPopup("github", function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } else {
-        auth.setUid(authData.uid);
-        require(["scaffold"], function() {});
-      }
-    },
-    {remember: "sessionOnly"});
-  } else {
-    auth.setUid(authData.uid);
-    require(["scaffold"], function() {});
-  }
 });

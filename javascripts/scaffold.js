@@ -1,14 +1,14 @@
 define(function(require){
   var populate = require("populate-songs");
   var slh = require("song-list-handlers");
-  var auth = require("authentication");
+  var uid = require("uid");
   var fh = require("filter-handlers");
   var ah = require("add-handlers");
   var Q = require("q");
 
   var firebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   var currentPage = location.pathname.substring(1); // get the current HTML page name
-  var currentUser = auth.getUid();
+  var currentUser = uid.getUid();
   var deferred = Q.defer();
   
   // Execute on DB change
