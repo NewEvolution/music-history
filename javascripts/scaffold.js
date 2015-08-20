@@ -1,7 +1,6 @@
 define(function(require){
   var populate = require("populate-songs");
   var slh = require("song-list-handlers");
-  var _firebase = require("firebase");
   var fh = require("filter-handlers");
   var ah = require("add-handlers");
   var Q = require("q");
