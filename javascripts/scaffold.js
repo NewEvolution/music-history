@@ -1,9 +1,10 @@
 define(function(require){
   var populate = require("populate-songs");
   var slh = require("song-list-handlers");
-  var uid = require("uid");
   var fh = require("filter-handlers");
   var ah = require("add-handlers");
+  var search = require("search");
+  var uid = require("uid");
   var Q = require("q");
 
   var firebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
