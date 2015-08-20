@@ -30,7 +30,8 @@ function(dependencies, auth){
         auth.setUid(authData.uid);
         require(["scaffold"], function() {});
       }
-    });
+    },
+    {remember: "sessionOnly"});
   } else {
     auth.setUid(authData.uid);
     require(["scaffold"], function() {});

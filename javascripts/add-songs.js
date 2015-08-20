@@ -1,5 +1,6 @@
 define(function(require){
   var $ = require("jquery");
+  var auth = require("authentication");
   var formData = require("get-form-data");
   var alertModal = function(missingField) {
     var aOrAn = "";
@@ -30,6 +31,7 @@ define(function(require){
           outputObj[key] = inputObj[key];
         }
       }
+      outputObj.uid = auth.getUid();
       if(isValid) { // Clear out the form on sucessfull submission
         isValid = false;
         firebaseRef.child("songs").push(outputObj, function() {

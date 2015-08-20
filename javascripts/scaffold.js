@@ -1,16 +1,18 @@
 define(function(require){
   var populate = require("populate-songs");
   var slh = require("song-list-handlers");
+  var auth = require("authentication");
   var fh = require("filter-handlers");
   var ah = require("add-handlers");
   var Q = require("q");
 
   var firebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");
   var currentPage = location.pathname.substring(1); // get the current HTML page name
+  var currentUser = auth.getUid();
   var deferred = Q.defer();
   
   // Execute on DB change
-  firebaseRef.child("songs").on("value", function(snapshot) {
+  firebaseRef.child("songs").orderByChild("uid").equalTo(currentUser).on("value", function(snapshot) {
     var retrievedSongsObj = snapshot.val();
     populate.populatePage(retrievedSongsObj, currentPage, deferred);
   });
