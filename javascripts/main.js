@@ -27,7 +27,6 @@ function(dependencies, auth){
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
         auth.setUid(authData.uid);
         require(["scaffold"], function() {});
       }
