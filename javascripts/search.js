@@ -13,10 +13,10 @@ define(function(require) {
         sectionsToHide[sectionsToHide.length] = $(this);
       }
     });
-    console.log("sectionsToShow", sectionsToShow);
     sectionsToHide = _.difference(sectionsToHide, sectionsToShow);
     return sectionsToHide;
   };
+  // Search button
   $("#search-btn").click(function(e) {
     e.preventDefault();
     searchQuery= $("#search").val().toLowerCase();

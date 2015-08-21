@@ -32,6 +32,9 @@ nav {
 .input-group {
   padding-top: 15px !important; }
 
+#search-group {
+  padding: 0 !important; }
+
 .form-action {
   margin-top: 15px !important; }
 
