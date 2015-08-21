@@ -1,33 +1,28 @@
 define(function(require) {
-  var $ = require("jquery");
   var mf = require("multiuse-functions");
+  var $ = require("jquery");
+  var _ = require("lodash");
   var searchQuery;
   var songsFilter = function(searchQuery) {
     var sectionsToHide = [];
-    if(searchQuery.artist !== "all") {
-      $("section .artist-label em").each(function(e) {
-        if($(this).html() !== searchQuery.artist) {
-          sectionsToHide[sectionsToHide.length] = $(this).parents(".song-section");
-        }
-      });
-    }
-    if(searchQuery.album !== "all") {
-      $("section .album-label em").each(function(e) {
-        if($(this).html() !== searchQuery.album) {
-          sectionsToHide[sectionsToHide.length] = $(this).parents(".song-section");
-        }
-      });
-    }
-    if(searchQuery.genre.length !== 0) {
-      $("section .genre-label em").each(function(e) {
-        if(_.indexOf(searchQuery.genre, $(this).html()) === -1) {
-          sectionsToHide[sectionsToHide.length] = $(this).parents(".song-section");
-        }
-      });
-    }
+    var sectionsToShow = [];
+    $("section").each(function(e) {
+      if($(this).text().toLowerCase().indexOf(searchQuery) !== -1) {
+        sectionsToShow[sectionsToShow.length] = $(this);
+      } else {
+        sectionsToHide[sectionsToHide.length] = $(this);
+      }
+    });
+    console.log("sectionsToShow", sectionsToShow);
+    sectionsToHide = _.difference(sectionsToHide, sectionsToShow);
+    return sectionsToHide;
   };
-  $("#search-btn").click(function() {
-     searchQuery= $("#search").val();
-     songsFilter(searchQuery);
+  $("#search-btn").click(function(e) {
+    e.preventDefault();
+    searchQuery= $("#search").val().toLowerCase();
+    var sectionsToHide = songsFilter(searchQuery);
+    for (var i = 0; i < sectionsToHide.length; i++) {
+      mf.elementHide(sectionsToHide[i]);
+    }
   });
 });

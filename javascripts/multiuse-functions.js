@@ -2,6 +2,7 @@ define(function(require){
   var $ = require("jquery");
   var functionObj = {};
   functionObj.elementHide = function(elementToHide) {
+    console.log(elementToHide);
     $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
       if(e.originalEvent.animationName === "fadeout") {
         $(this).addClass("full-transparent");
