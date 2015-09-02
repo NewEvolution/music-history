@@ -1,8 +1,8 @@
 define(function(require){
+  var songListHandlers = require("song-list-handlers");
+  var filterHandlers = require("filter-handlers");
+  var addHandlers = require("add-handlers");
   var populate = require("populate-songs");
-  var slh = require("song-list-handlers");
-  var fh = require("filter-handlers");
-  var ah = require("add-handlers");
   var search = require("search");
   var uid = require("uid");
   var Q = require("q");
@@ -15,16 +15,16 @@ define(function(require){
   // Execute on DB change
   firebaseRef.child("songs").orderByChild("uid").equalTo(currentUser).on("value", function(snapshot) {
     var retrievedSongsObj = snapshot.val();
-    populate.populatePage(retrievedSongsObj, currentPage, deferred);
+    populate(retrievedSongsObj, currentPage, deferred);
   });
 
   // Song List Handlers
-  slh.handlers(firebaseRef);
+  songListHandlers(firebaseRef);
 
   deferred.promise.then(function(promisedObj) {
     // Filter Form Handlers
-    fh.handlers(promisedObj.u_artists, promisedObj.u_albums, promisedObj.songs_a);
+    filterHandlers(promisedObj.u_artists, promisedObj.u_albums, promisedObj.songs_a);
     // Add Form Handlers
-    ah.handlers(promisedObj.u_artists, promisedObj.u_albums, promisedObj.songs_a, firebaseRef);
+    addHandlers(promisedObj.u_artists, promisedObj.u_albums, promisedObj.songs_a, firebaseRef);
   });
 });

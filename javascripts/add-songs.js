@@ -1,6 +1,6 @@
 define(function(require){
+  var uid = require("uid");
   var $ = require("jquery");
-  var auth = require("authentication");
   var formData = require("get-form-data");
   var alertModal = function(missingField) {
     var aOrAn = "";
@@ -17,7 +17,7 @@ define(function(require){
     songSubmit: function(firebaseRef) {
       var isValid = true;
       var outputObj = {};
-      inputObj = formData.pullData();
+      inputObj = formData();
       for(var key in inputObj) {
         // Verify all form fields are completed, pop up modal error if not
         if(inputObj[key] === "" || inputObj[key].length === 0 || inputObj[key][0] === "") {
@@ -31,7 +31,7 @@ define(function(require){
           outputObj[key] = inputObj[key];
         }
       }
-      outputObj.uid = auth.getUid();
+      outputObj.uid = uid.getUid();
       if(isValid) { // Clear out the form on sucessfull submission
         isValid = false;
         firebaseRef.child("songs").push(outputObj, function() {
