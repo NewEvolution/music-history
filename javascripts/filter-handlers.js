@@ -1,8 +1,8 @@
 define(function(require){
-  var $ = require("jquery");
+  var filterSongs = require("filter-songs");
   var template = require("es6!hb-template");
   var mf = require("multiuse-functions");
-  var filterSongs = require("filter-songs");
+  var $ = require("jquery");
   return function(uniqueArtists, uniqueAlbums, retrievedSongsArr) {
     // Initially hidden so all its reveals look the same
     $("#filter-reset").slideUp();

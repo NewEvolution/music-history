@@ -1,8 +1,8 @@
 define(function(require){
-  var $ = require("jquery");
-  var _ = require("lodash");
   var template = require("es6!hb-template");
   var mf = require("multiuse-functions");
+  var $ = require("jquery");
+  var _ = require("lodash");
   return function(sentSongsObj, currentPage, thePromise) { // Populates the song list and form elements on initial page load
     var promisedObj = {};
     var retrievedSongsArr = [];

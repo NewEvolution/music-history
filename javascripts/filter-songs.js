@@ -1,7 +1,7 @@
 define(function(require){
+  var formData = require("get-form-data");
   var $ = require("jquery");
   var _ = require("lodash");
-  var formData = require("get-form-data");
   return function() {
     var sectionsToHide = [];
     var selectedObj = formData();

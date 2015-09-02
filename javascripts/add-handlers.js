@@ -1,9 +1,9 @@
 define(function(require){
-  var $ = require("jquery");
-  var _ = require("lodash");
-  var addSongs = require("add-songs");
   var template = require("es6!hb-template");
   var mf = require("multiuse-functions");
+  var addSongs = require("add-songs");
+  var $ = require("jquery");
+  var _ = require("lodash");
   return function(uniqueArtists, uniqueAlbums, retrievedSongsArr, firebaseRef) {
     // Initially hidden so all its reveals look the same
     $("#add-reset").slideUp();
@@ -30,7 +30,7 @@ define(function(require){
     // Submit button
     $("#add-submit").click(function(e) {
       e.preventDefault();
-      addSongs.songSubmit(firebaseRef);
+      addSongs(firebaseRef);
       mf.elementHide($("#add-reset"));
     });
     // Reveal the reset button on any change to the form
