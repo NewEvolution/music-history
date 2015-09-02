@@ -2,10 +2,10 @@ import * as mf from "es6!multiuse-functions";
 import * as $ from "jquery";
 import * as _ from "lodash";
 let searchQuery;
-let songsFilter = searchQuery => {
+let songsFilter = function(searchQuery) {
   let sectionsToHide = [];
   let sectionsToShow = [];
-  $("section").each(e => {
+  $("section").each(function(e) {
     if($(this).text().toLowerCase().indexOf(searchQuery) !== -1) {
       sectionsToShow[sectionsToShow.length] = $(this);
     } else {
@@ -16,7 +16,7 @@ let songsFilter = searchQuery => {
   return sectionsToHide;
 };
 // Search button
-$("#search-btn").click(e => {
+$("#search-btn").click(function(e) {
   e.preventDefault();
   searchQuery= $("#search").val().toLowerCase();
   let sectionsToHide = songsFilter(searchQuery);

@@ -2,7 +2,7 @@ import * as template from "es6!hb-template";
 import * as mf from "es6!multiuse-functions";
 import * as $ from "jquery";
 import * as _ from "lodash";
-export default (sentSongsObj, currentPage, thePromise) => { // Populates the song list and form elements on initial page load
+export default function(sentSongsObj, currentPage, thePromise) { // Populates the song list and form elements on initial page load
   let promisedObj = {};
   let retrievedSongsArr = [];
   for(let key in sentSongsObj) {
@@ -43,11 +43,11 @@ export default (sentSongsObj, currentPage, thePromise) => { // Populates the son
   }
   // End genre setter block =================================================================
   $(".content").html(template.songs(sentSongsObj));
-  $("section").each(() => { // Fade in all the song displays
+  $("section").each(function() { // Fade in all the song displays
     mf.elementReveal(this);
   });
   promisedObj.u_artists = uniqueArtists;
   promisedObj.u_albums = uniqueAlbums;
   promisedObj.songs_a = retrievedSongsArr;
   thePromise.resolve(promisedObj);
-};
+}

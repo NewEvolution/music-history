@@ -2,16 +2,16 @@ import * as mf from "es6!multiuse-functions";
 import * as $ from "jquery";
 let songToDelete =[];
 let songToEdit = [];
-export default myFirebaseRef => {
+export default function(myFirebaseRef) {
   // Hide button on song list
-  $(".content").on("click", ".hide-btn", e => {
+  $(".content").on("click", ".hide-btn", function(e) {
     mf.elementHide($(this).parents(".song-section"));
     if($("#filter-reset").hasClass("full-transparent")) {
       mf.elementReveal($("#filter-reset"));
     }
   });
   // Edit button on song list
-  $(".content").on("click", ".edit-btn", e => {
+  $(".content").on("click", ".edit-btn", function(e) {
     songToEdit = mf.getClickedSong($(this));
     $("#edit-title").val(songToEdit[1].title);
     $("#edit-artist").val(songToEdit[1].artist);
@@ -20,7 +20,7 @@ export default myFirebaseRef => {
     $('#edit-modal').modal('show');
   });
   // Confirm edit button on modal edit window
-  $("#confirm-edit").click(e => {
+  $("#confirm-edit").click(function(e) {
     let editedSong = {};
     editedSong.title = $("#edit-title").val();
     editedSong.artist = $("#edit-artist").val();
@@ -30,15 +30,15 @@ export default myFirebaseRef => {
     songToEdit = [];
   });
   // Delete button on song list
-  $(".content").on("click", ".delete-btn", e => {
+  $(".content").on("click", ".delete-btn", function(e) {
     songToDelete = mf.getClickedSong($(this));
     $("#delete-title").html(songToDelete[1].title);
     $("#delete-artist").html(songToDelete[1].artist);
     $('#delete-modal').modal('show');
   });
   // Confirm delete button on modal delete warning
-  $("#confirm-delete").click(e => {
+  $("#confirm-delete").click(function(e) {
     myFirebaseRef.child("songs").child(songToDelete[0]).set(null);
     songToDelete = [];
   });
-};
+}

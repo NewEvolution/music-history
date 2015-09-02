@@ -1,7 +1,7 @@
 import * as formData from "es6!get-form-data";
 import * as $ from "jquery";
 import * as uid from "es6!uid";
-let alertModal = missingField => {
+let alertModal = function(missingField) {
   let aOrAn = "";
   if(missingField.charAt(0) == "a") {
     aOrAn = " an ";
@@ -12,7 +12,7 @@ let alertModal = missingField => {
   $("#invalid-field").html(missingField);
   $('#invalid-modal').modal('show');
 };
-export default firebaseRef => {
+export default function(firebaseRef) {
   let isValid = true;
   let outputObj = {};
   inputObj = formData();
@@ -32,10 +32,10 @@ export default firebaseRef => {
   outputObj.uid = uid.getUid();
   if(isValid) { // Clear out the form on sucessfull submission
     isValid = false;
-    firebaseRef.child("songs").push(outputObj, () => {
-      $('#add-form').each(() => {
+    firebaseRef.child("songs").push(outputObj, function() {
+      $('#add-form').each(function() {
         this.reset();
       });
     });
   }
-};
+}

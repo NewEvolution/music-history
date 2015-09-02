@@ -3,11 +3,11 @@ import * as template from "es6!hb-template";
 import * as addSongs from "es6!add-songs";
 import * as $ from "jquery";
 import * as _ from "lodash";
-export default (uniqueArtists, uniqueAlbums, retrievedSongsArr, firebaseRef) => {
+export default function(uniqueArtists, uniqueAlbums, retrievedSongsArr, firebaseRef) {
   // Initially hidden so all its reveals look the same
   $("#add-reset").slideUp();
   // Artist dropdown menu
-  $("#add_artist-dropdown").on("click", ".artist-dr-item", e => {
+  $("#add_artist-dropdown").on("click", ".artist-dr-item", function(e) {
     if($("#add-reset").hasClass("full-transparent")) {
       mf.elementReveal($("#add-reset"));
     }
@@ -17,7 +17,7 @@ export default (uniqueArtists, uniqueAlbums, retrievedSongsArr, firebaseRef) => 
     $("#add_album-dropdown").html(template.addDropdown({album:artistAlbums}));
   });
   // Album dropdown menu
-  $("#add_album-dropdown").on("click", ".album-dr-item", e => {
+  $("#add_album-dropdown").on("click", ".album-dr-item", function(e) {
     if($("#add-reset").hasClass("full-transparent")) {
       mf.elementReveal($("#add-reset"));
     }
@@ -27,25 +27,25 @@ export default (uniqueArtists, uniqueAlbums, retrievedSongsArr, firebaseRef) => 
     $("#add_artist-dropdown").html(template.addDropdown({artist:albumArtist}));
   });
   // Submit button
-  $("#add-submit").click(e => {
+  $("#add-submit").click(function(e) {
     e.preventDefault();
     addSongs(firebaseRef);
     mf.elementHide($("#add-reset"));
   });
   // Reveal the reset button on any change to the form
-  $("#add-form").on("change", ".add-input", e => {
+  $("#add-form").on("change", ".add-input", function(e) {
     if($("#add-reset").hasClass("full-transparent")) {
       mf.elementReveal($("#add-reset"));
     }
   });
   // Form reset button
-  $("#add-reset").click(e => {
+  $("#add-reset").click(function(e) {
     e.preventDefault();
     mf.elementHide($("#add-reset"));
-    $('#add-form').each(() => {
+    $('#add-form').each(function() {
       this.reset();
     });
     $("#add_artist-dropdown").html(template.addDropdown({artist:uniqueArtists}));
     $("#add_album-dropdown").html(template.addDropdown({album:uniqueAlbums}));
   });
-};
+}

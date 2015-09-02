@@ -1,7 +1,7 @@
 import * as $ from "jquery";
 export default {
-  elementHide: elementToHide => {
-    $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", e => {
+  elementHide: function(elementToHide) {
+    $(elementToHide).addClass("fade-out-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
       if(e.originalEvent.animationName === "fadeout") {
         $(this).addClass("full-transparent");
         $(this).removeClass("fade-out-anim");
@@ -9,16 +9,16 @@ export default {
       }
     });
   },
-  elementReveal: elementToReveal => {
+  elementReveal: function(elementToReveal) {
     $(elementToReveal).slideDown();
-    $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", e => {
+    $(elementToReveal).addClass("fade-in-anim").on("animationend oAnimationEnd webkitAnimationEnd msAnimationEnd", function(e) {
       if(e.originalEvent.animationName === "fadein") {
         $(this).removeClass("full-transparent");
         $(this).removeClass("fade-in-anim");
       }
     });
   },
-  getClickedSong: clickedElement => {
+  getClickedSong: function(clickedElement) {
     let clickedSongObj = {};
     let $clickedParent = $(clickedElement).parents(".song-section");
     let clickedSongKey = $clickedParent.attr("key");
