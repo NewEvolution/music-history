@@ -1,11 +1,9 @@
-define(function(require) {
-  var uid = null;
-  return {
-    getUid: function() {
-      return uid;
-    },
-    setUid: function(newId) {
-      uid = newId;
-    }
-  };
-});
+let uid = null;
+export default {
+  getUid: () => {
+    return uid;
+  },
+  setUid: newId => {
+    uid = newId;
+  }
+};
