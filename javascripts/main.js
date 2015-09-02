@@ -20,6 +20,6 @@ requirejs.config({
 });
 
 // The main function requiring all our anciliary scripts
-requirejs(["dependencies", "authentication"],
+requirejs(["es6!dependencies", "es6!authentication"],
 function(dependencies, auth){
 });

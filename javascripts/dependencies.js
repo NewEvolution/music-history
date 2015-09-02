@@ -1,5 +1,3 @@
-define(function(require){
-    var Handlebars = require("hbs");
-    var bootstrap = require("bootstrap");
-    var firebase = require("firebase");
-});
+import * as Handlebars from "hbs";
+import * as bootstrap from "bootstrap";
+import * as firebase from "firebase";
