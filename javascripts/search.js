@@ -24,3 +24,11 @@ $("#search-btn").click(function(e) {
     mf.elementHide(sectionsToHide[i]);
   }
 });
+// Reset search field
+$("#search-clear").click(function(e) {
+  $("#search").val("");
+  let allHiddenSongs = $("section.row.full-transparent");
+  for(let i=0; i<allHiddenSongs.length; i++) {
+    mf.elementReveal(allHiddenSongs[i]);
+  }
+});

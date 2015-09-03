@@ -24,7 +24,6 @@ export default function(uniqueArtists, uniqueAlbums, retrievedSongsArr) {
   });
   // Submit button
   $("#filter-submit").click(function(e) {
-    console.log("ding!");
     e.preventDefault();
     if($("#filter-reset").hasClass("full-transparent") === false) {
       let sectionsToHide = filterSongs();
