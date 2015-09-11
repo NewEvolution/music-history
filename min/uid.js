@@ -1,0 +1,1 @@
+define(["exports","module"],function(e,t){"use strict";var n=null;t.exports={getUid:function(){return n},setUid:function(t){n=t}}});

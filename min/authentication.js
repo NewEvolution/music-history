@@ -1,0 +1,1 @@
+define(["exports","firebase","uid"],function(e,t,n){"use strict";var r=new Firebase("https://sizzling-torch-4887.firebaseio.com"),i=r.getAuth();i===null?r.authWithOAuthPopup("github",function(e,t){e?console.log("Login Failed!",e):(n.setUid(t.uid),require(["scaffold"],function(){}))},{remember:"sessionOnly"}):(n.setUid(i.uid),require(["scaffold"],function(){}))});

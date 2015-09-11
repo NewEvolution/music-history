@@ -1,0 +1,15 @@
+
+main.js
+----------------
+/Users/ryan/workspace/projects/music-history/lib/bower_components/jquery/dist/jquery.min.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/require-handlebars-plugin/hbs/handlebars.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/require-handlebars-plugin/hbs/underscore.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/require-handlebars-plugin/hbs/i18nprecompile.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/require-handlebars-plugin/hbs/json2.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/require-handlebars-plugin/hbs.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/firebase/firebase.js
+/Users/ryan/workspace/projects/music-history/lib/bower_components/bootstrap/dist/js/bootstrap.min.js
+dependencies.js
+uid.js
+authentication.js
+main.js

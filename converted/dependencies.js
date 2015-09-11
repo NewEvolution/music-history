@@ -1,4 +1,4 @@
-define(["exports", "hbs", "bootstrap", "firebase"], function (exports, _hbs, _bootstrap, _firebase) {
+define(["exports", "jquery", "hbs", "firebase", "bootstrap"], function (exports, _jquery, _hbs, _firebase, _bootstrap) {
   "use strict";
 });
 //# sourceMappingURL=dependencies.js.map
