@@ -1,4 +1,4 @@
-import * as mf from "es6!multiuse-functions";
+import * as mf from "multiuse-functions";
 import * as $ from "jquery";
 import * as _ from "lodash";
 let searchQuery;

@@ -1,6 +1,6 @@
-import * as formData from "es6!get-form-data";
+import * as formData from "get-form-data";
 import * as $ from "jquery";
-import * as uid from "es6!uid";
+import * as uid from "uid";
 let alertModal = function(missingField) {
   let aOrAn = "";
   if(missingField.charAt(0) == "a") {

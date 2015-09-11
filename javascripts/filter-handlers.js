@@ -1,6 +1,6 @@
-import * as filterSongs from "es6!filter-songs";
-import * as template from "es6!hb-template";
-import * as mf from "es6!multiuse-functions";
+import * as filterSongs from "filter-songs";
+import * as template from "hb-template";
+import * as mf from "multiuse-functions";
 import * as $ from "jquery";
 export default function(uniqueArtists, uniqueAlbums, retrievedSongsArr) {
   // Initially hidden so all its reveals look the same

@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import * as uid from "es6!uid";
+import * as uid from "uid";
 let ref = new Firebase("https://sizzling-torch-4887.firebaseio.com");
 let authData = ref.getAuth();
 if(authData === null) {
@@ -8,11 +8,11 @@ if(authData === null) {
       console.log("Login Failed!", error);
     } else {
       uid.setUid(authData.uid);
-      require(["es6!scaffold"], () => {});
+      require(["scaffold"], () => {});
     }
   },
   {remember: "sessionOnly"});
 } else {
   uid.setUid(authData.uid);
-  require(["es6!scaffold"], () => {});
+  require(["scaffold"], () => {});
 }
