@@ -1,5 +1,5 @@
 requirejs.config({
-  baseUrl: "./javascripts",
+  baseUrl: "./min",
   paths: {
     "q": "../lib/bower_components/q/q",
     "lodash": "../lib/bower_components/lodash/lodash.min",

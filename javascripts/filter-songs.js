@@ -1,4 +1,4 @@
-import * as formData from "es6!get-form-data";
+import * as formData from "get-form-data";
 import * as $ from "jquery";
 import * as _ from "lodash";
 export default () => {

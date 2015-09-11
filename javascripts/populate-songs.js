@@ -1,5 +1,5 @@
-import * as template from "es6!hb-template";
-import * as mf from "es6!multiuse-functions";
+import * as template from "hb-template";
+import * as mf from "multiuse-functions";
 import * as $ from "jquery";
 import * as _ from "lodash";
 export default function(sentSongsObj, currentPage, thePromise) { // Populates the song list and form elements on initial page load

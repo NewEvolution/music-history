@@ -1,9 +1,9 @@
-import * as songListHandlers from "es6!song-list-handlers";
-import * as filterHandlers from "es6!filter-handlers";
-import * as addHandlers from "es6!add-handlers";
-import * as populate from "es6!populate-songs";
-import * as search from "es6!search";
-import * as uid from "es6!uid";
+import * as songListHandlers from "song-list-handlers";
+import * as filterHandlers from "filter-handlers";
+import * as addHandlers from "add-handlers";
+import * as populate from "populate-songs";
+import * as search from "search";
+import * as uid from "uid";
 import * as Q from "q";
 
 let firebaseRef = new Firebase("https://sizzling-torch-4887.firebaseio.com/");

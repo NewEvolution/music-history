@@ -23,7 +23,6 @@
     "lodash": "~3.10.1",
     "q": "~1.0.1",
     "require-handlebars-plugin": "~0.11.3",
-    "requirejs": "~2.1.20",
-    "requirejs-babel": "~0.0.8"
+    "requirejs": "~2.1.20"
   }
 }
