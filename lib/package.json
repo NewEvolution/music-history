@@ -14,5 +14,8 @@
     "grunt-newer": "^1.1.1",
     "grunt-plato": "^1.2.1",
     "matchdep": "^0.3.0"
+  },
+  "dependencies": {
+    "bower": "^1.7.9"
   }
 }

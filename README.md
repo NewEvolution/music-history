@@ -13,7 +13,7 @@ Allows for submission & viewing of songs with filters by album/artist/genre and 
 ###Post Cloning:
 - Inside the _lib_ directory:
   - Run `npm install`
-  - Run `bower install`
+  - Then run `./node_modules/.bin/bower install`
 - Inside the main repo directory:
  - Run `http-server`
  - Make note of the URL returned after running `http-server`
