@@ -7,6 +7,7 @@ Allows for submission & viewing of songs with filters by album/artist/genre and 
 ###Requirements:
 - [Node.js](https://nodejs.org/)
 - Installation of _http-server_ via `npm install -g http-server`
+- Installation of _bower_ via `npm install -g bower`
 - A Github account
 
 ###Post Cloning:
